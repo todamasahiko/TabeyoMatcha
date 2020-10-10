@@ -1,0 +1,39 @@
+<header>
+  <div class="container clearfix">
+    <span>TabeyoMatcha</span>
+
+    <nav>
+      <ul class="nav">
+      <!--ログインしている場合-->
+        <% if user_signed_in? %>
+          <li class="nav-list">
+            <%= link_to 'Top' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to 'My profile' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to 'Inquiry' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to 'ログアウト' %>
+          </li>
+      <!--ログインしていない場合-->
+        <% else %>
+          <li class="nav-list">
+          	<%= link_to 'Top' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to 'About' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to '新規登録' %>
+          </li>
+          <li class="nav-list">
+            <%= link_to 'ログイン' %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
