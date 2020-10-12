@@ -4,33 +4,33 @@
 
     <nav>
       <ul class="nav">
-      <!--ログインしている場合-->
+        <!--ログインしている場合-->
         <% if user_signed_in? %>
           <li class="nav-list">
-            <%= link_to 'Top' %>
+            <%= link_to 'Top', top_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'My profile' %>
+            <%= link_to 'My profile', class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'Inquiry' %>
+            <%= link_to 'お問い合わせ', new_inquiry_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'ログアウト' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: '' %>
           </li>
-      <!--ログインしていない場合-->
+        <!--ログインしていない場合-->
         <% else %>
           <li class="nav-list">
-          	<%= link_to 'Top' %>
+            <%= link_to 'Top', top_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'About' %>
+            <%= link_to 'About', about_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to '新規登録' %>
+            <%= link_to '新規登録', new_user_registration_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'ログイン' %>
+            <%= link_to 'ログイン', new_user_session_path, class: '' %>
           </li>
         <% end %>
       </ul>

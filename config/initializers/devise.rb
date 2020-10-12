@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '757bb60e17e857ca0b033b15bc4867fa2e8117c9bac0bebf6ed4e3fa9a1fc13732859aa609b4b718cae619ecec420855034c2c23620a5511584bc9d229030ea6'
+  # config.secret_key = '6b914fae65552daef0359c23192c99f6760ae81112ca8a4f2799ace74be4719ec6adc8012b07463f385538b6160879adb732f93d55c76e81944bd09456c53ea3'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '27410048497b0418e5e986e413c860f9f16eeed308027d602d7f88038c6c0afc8d58616ec03857e8828aea8267153c3fad58bf03fb40c7d118601e3af701c718'
+  # config.pepper = 'c75dd7e9eb33be6a425813566a366e99ade4839cfc1db7996d93e3ca6002b55b0d4a69cfad833186b14445cd935f36f3dbbfd3557862a4372cfd07fd9ba6dcf1'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -178,7 +178,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..128
+  config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

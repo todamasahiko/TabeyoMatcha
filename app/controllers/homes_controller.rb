@@ -1,9 +1,10 @@
 class HomesController < ApplicationController
 
-  def top
-  end
+	before_action :authenticate_user!, except: [:top, :about]
 
-  def about
-  end
+	def top
+  	end
 
+  	def about
+  	end
 end
