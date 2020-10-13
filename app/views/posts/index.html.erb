@@ -1,0 +1,23 @@
+<!--メッセージ-->
+<% if flash[:notice] %>
+	<div class="flash">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+<!---->
+<div class="container">
+	<div class="row">
+    	<h4>投稿一覧</h4>
+    	<% @posts.each do |post| %>
+    		<%= link_to post_path(post.id) do %>
+    			<%= attachment_image_tag post, :image, size: '300x200' %>
+    		<% end %>
+    		<%= post.user.nickname %>
+    		<%= post.tag_content %>
+    	<% end %>
+
+    	<div class="action">
+			<%= link_to '新規登録', new_post_path, class: 'btn btn-success btn-lg' %>
+		</div>
+	</div>
+</div>

@@ -10,13 +10,13 @@
             <%= link_to 'Top', top_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'My profile', class: '' %>
+            <%= link_to 'My profile', user_path(current_user.id), class: '' %>
           </li>
           <li class="nav-list">
             <%= link_to 'お問い合わせ', new_inquiry_path, class: '' %>
           </li>
           <li class="nav-list">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: '' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: '', data: {confirm: 'ログアウトします。よろしいですか？'} %>
           </li>
         <!--ログインしていない場合-->
         <% else %>

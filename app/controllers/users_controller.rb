@@ -1,18 +1,27 @@
 class UsersController < ApplicationController
+  #アクセス制限
+  before_action :authenticate_user!
 
-	before_action :authenticate_user!, except: [:top, :about]
+  def show
+      @user = User.find(params[:id])
+  end
 
-	def show
-  	end
+  def edit
+      @user = User.find(params[:id])
+  end
 
-  	def edit
-  	end
+  def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+         flash[:notice] = '更新しました'
+         redirext_to user_path
+      else
+         render :show
+      end
+  end
 
-  	def update
-  	end
-
-  	private
-  	def user_params
+  private
+  def user_params
   	  params.require(:user).permit(:nickname, :email, :profile_image)
-  	end
+  end
 end

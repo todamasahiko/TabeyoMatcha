@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<%= form_with(model: @post, local: true) do |f| %>
+			<h4>投稿編集画面</h4>
+				<div class="field">
+					<%= attachment_image_tag @post, :image, size: '300x200' %>
+					<%= f.attachment_field :image %>
+				</div>
+
+				<div class="field">
+					<label>投稿内容</label>
+					<%= f.text_area :content, placeholder: '投稿内容' %>
+				</div>
+
+				<div class="field">
+					<label>投稿タグ</label>
+					<%= f.text_area :tag_content, placeholder: '投稿タグ' %>
+				</div>
+
+				<div class="action">
+					<%= f.submit '更新', class: 'btn btn-success btn-lg' %>
+					<%= link_to '戻る', posts_path, class: 'btn btn-primary' %>
+				</div>
+		<% end %>
+	</div>
+</div>
