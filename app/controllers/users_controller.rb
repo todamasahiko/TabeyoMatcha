@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
 
-  def update
+  def updatetrue
       @user = User.find(params[:id])
       if @user.update(user_params)
          flash[:notice] = '更新しました'

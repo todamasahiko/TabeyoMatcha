@@ -1,15 +1,43 @@
+<!--メッセージ-->
+<% if flash[:success] %>
+  <div class="flash">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:failure] %>
+  <div class="flash">
+    <%= flash[:failure] %>
+  </div>
+<% end %>
+<!---->
 <div class="container">
 	<div class="row">
 		<h4>投稿詳細</h4>
         <%= attachment_image_tag @post, :image, size: '300x200' %>
-    	<%= @post.user.nickname %>
-    	<%= @post.content %>
-    	<%= @post.tag_content %>
-
+        <label>投稿者</label><%= @post.user.nickname %>
+        <label>投稿内容</label><%= @post.content %>
+        <label>投稿タグ</label><%= @post.tag_content %>
+        <label>コメント数</label><%= @post.comments.count %>
+        <label>いいね数</label><%= @post.likes.count%>
+        <!---コメント一覧-->
+        <%= render 'posts/comment', comments: @post.comments %>
+        <!--コメント機能-->
+        <% if user_signed_in? %>
+            <div class="comment-form">
+                <%= form_with(model: [@post, @comment], local: true) do |f| %>
+                    <%= f.text_area :content, size: '90x5', placeholder: 'コメントをご記入ください' %>
+                    <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+                <% end %>
+            </div>
+        <% end %>
+        <!--いいね機能-->
+        <%= render 'posts/like', post: @post %>
+        <!--ログイン（投稿）ユーザーのみ-->
     	<% if @post.user == current_user %>
     		<div class="action">
     			<%= link_to '編集する', edit_post_path(@post.id), class: 'btn btn-primary' %>
-    			<%= link_to '削除する', post_path, method: :delete, class: 'btn btn-danger', data: {confirm: '投稿を削除します。よろしいですか？'} %>
+    			<%= link_to '投稿を削除する', post_path, method: :delete, class: 'btn btn-danger', data: {confirm: '投稿を削除します。よろしいですか？'} %>
             </div>
         <% end %>
     </div>
