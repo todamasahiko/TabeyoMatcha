@@ -6,7 +6,7 @@ class RelationshipsController < ApplicationController
 		current_user.follow(params[:user_id])
 		redirect_to request.referer
 	end
-　　#ユーザーのフォローを外す
+    #ユーザーのフォローを外す
 	def destroy
 		current_user.unfollow(params[:user_id])
 		redirect_to request.referer
