@@ -14,7 +14,7 @@
 <div class="container">
 	<div class="row">
 		<h4>投稿詳細</h4>
-        <%= attachment_image_tag @post, :image, size: '300x200' %>
+        <p><%= attachment_image_tag @post, :image, size: '300x200' %></p>
         <label>投稿者</label><%= @post.user.nickname %>
         <label>投稿内容</label><%= @post.content %>
         <label>投稿タグ</label><%= @post.tag_content %>

@@ -12,11 +12,12 @@
     		<%= link_to post_path(post.id) do %>
     			<%= attachment_image_tag post, :image, size: '300x200' %>
     		<% end %>
-        <label>投稿者</label><%= post.user.nickname %>
-        <label>投稿内容</label><%= post.content %>
-        <label>投稿タグ</label><%= post.tag_content %>
-        <label>コメント数</label><%= post.comments.count %>
-        <label>いいね数</label><%= post.likes.count%>
+            <p><%= post.user.nickname %></p>
+            <p><%= post.tag_content %></p>
+            <label>コメント数</label><%= post.comments.count %>
+            <label>いいね数</label><%= post.likes.count%>
+            <!--時間表示-->
+            <p><%= date_format(post.created_at) %></p>
     	<% end %>
 
     	<div class="action">

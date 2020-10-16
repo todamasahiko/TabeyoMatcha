@@ -1,36 +1,37 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-	#アソシエーション
+	##アソシエーション
 	devise :database_authenticatable, :registerable,
 		     :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   attachment :profile_image
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :bookmarks, dependent: :destroy
-  #フォロー・フォロワー機能
+  has_many :likes
+  #has_many :like_posts, through: :likes
+  #has_many :bookmarks, dependent: :destroy
+  ##フォロー・フォロワー機能
   #フォローをする
-  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  #has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   #フォローをされている
-  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  #has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   #自分がフォローをしているユーザー
-  has_many :following_user, through: :follower, source: :followed
+  #has_many :following_user, through: :follower, source: :followed
   #自分がフォローをされているユーザー
-  has_many :follower_user, through: :followed, source: :follower
+  #has_many :follower_user, through: :followed, source: :follower
   #ユーザーをフォローする
-  def follow(user_id)
-    follower.create(followed_id: user_id)
-  end
+  #def follow(user_id)
+    #follower.create(followed_id: user_id)
+  #end
   #ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
-  end
+  #def unfollow(user_id)
+    #follower.find_by(followed_id: user_id).destroy
+  #end
   #フォロー有無の確認
-  def following?(user)
-    following_user.include?(user)
-  end
-  #バリデーション
+  #def following?(user)
+    #following_user.include?(user)
+  #end
+  ##バリデーション
   #ニックネーム(15字以内)
   validates :nickname, presence: true, length: { maximum: 15 }
 	#メールアドレス
