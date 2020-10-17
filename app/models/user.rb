@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-	##アソシエーション
+	###アソシエーション
 	devise :database_authenticatable, :registerable,
 		     :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
@@ -31,7 +31,22 @@ class User < ApplicationRecord
   #def following?(user)
     #following_user.include?(user)
   #end
-  ##バリデーション
+  ##通知機能
+  #自分からの通知
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id'
+  #相手からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
+  #フォロー通知
+  def create_notification_follow(current_user)
+    #すでに「フォロー」済か確認、「フォロー」した際に1度だけ通知が行く
+    temp = Notification.where(['visiter_id = ? and visited_id = ? and action = ?', current_user.id, 'follow'])
+    #まだ「フォロー」されていない場合、通知レコードを作る
+    if temp.blank?
+      notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
+      notification.save if notification.valid?
+    end
+  end
+  ###バリデーション
   #ニックネーム(15字以内)
   validates :nickname, presence: true, length: { maximum: 15 }
 	#メールアドレス

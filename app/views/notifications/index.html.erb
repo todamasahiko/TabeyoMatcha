@@ -1,0 +1,17 @@
+<!--自分の投稿への「いいね」「コメント」は通知表示をしない-->
+<% notifications = @notifications.where.not(visiter_id: current_user.id) %>
+<!---->
+<div class="container">
+	<div class="row">
+		<h4>通知一覧</h4>
+		<%= link_to destroy_all_notifications_path, method: :delete do %>
+			<h4>すべて削除</h4>
+		<% end %>
+
+		<% if @notifications.exists? %>
+			<%= render @notifications %>
+		<% else %>
+			<p>通知はありません</p>
+		<% end %>
+	</div>
+</div>

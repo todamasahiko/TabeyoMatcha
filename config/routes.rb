@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   		resource :likes, only: [:create, :destroy]
   		#resource :bookmarks, only: [:create, :destroy]
   	end
+    ##通知機能
+    resources :notifications, only: :index
+    #通知をすべて削除する
+    delete 'notifications' => 'notifications#destroy_all', as: 'destroy_all_notifications'
 end

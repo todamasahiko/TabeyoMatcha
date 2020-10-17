@@ -1,7 +1,9 @@
 class Comment < ApplicationRecord
-    #アソシエーション
+    ##アソシエーション
 	belongs_to :user
 	belongs_to :post
-	#バリデーション
+	#通知機能
+	has_many :notifications, dependent: :destroy
+	##バリデーション
 	validates :content, presence: true
 end
