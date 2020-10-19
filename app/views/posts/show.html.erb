@@ -20,6 +20,7 @@
         <label>投稿タグ</label><%= @post.tag_content %>
         <label>コメント数</label><%= @post.comments.count %>
         <label>いいね数</label><%= @post.likes.count%>
+        <label>PV数</label><%= @post.impressionist_count %>
         <!---コメント一覧-->
         <%= render 'posts/comment', comments: @post.comments %>
         <!--コメント機能-->

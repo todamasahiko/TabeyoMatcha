@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h4>参加者</h4>
+		<% @entries.each do |entry| %>
+			<strong><%= entry.user.nickname %></strong>さん
+		<% end %>
+        <!--メッセージの一覧表示-->
+		<% if @messages.present? %>
+			<% @messages.each do |message| %>
+				<% if mesage.user.nickname == current_user.nickname %>
+					<div class="text-right">
+						<%= message.content %>
+						<%= date_format(@message.created_at) %>
+					</div>
+				<% else %>
+					<div class="text-center">
+						<%= message.content %>
+						<%= date_format(@message.created_at) %>
+					</div>
+				<% else %>
+					<p>メッセージはありません</p>
+				<% end %>
+		<% end %>
+		<!--メッセージの新規作成-->
+		<%= form_with(model: @message, local: true) do |form| %>
+			<%= f.text_field :content, placeholder: 'メッセージを入力してください', size: '60' %>
+			<%= f.hidden_field :room_id, value: @room.id %>
+			<%= f.submit 'メッセージを送る', class: 'btn btn-primary' %>
+		<% end %>
+		<% if message.user == current_user %>
+			<%= link_to '削除', message, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %>
+		<% end %>
+	</div>
+</div>

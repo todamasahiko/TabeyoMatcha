@@ -16,6 +16,7 @@
             <p><%= post.tag_content %></p>
             <label>コメント数</label><%= post.comments.count %>
             <label>いいね数</label><%= post.likes.count%>
+            <label>PV数</label><%= post.impressionist_count %>
             <!--時間表示-->
             <p><%= date_format(post.created_at) %></p>
     	<% end %>

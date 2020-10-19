@@ -8,13 +8,16 @@ class User < ApplicationRecord
   attachment :profile_image
   has_many :comments, dependent: :destroy
   has_many :likes
+  ##DM機能
+  has_many :messaages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   #has_many :like_posts, through: :likes
   #has_many :bookmarks, dependent: :destroy
   ##フォロー・フォロワー機能
   #フォローをする
-  #has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  #has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id'
   #フォローをされている
-  #has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  #has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id'
   #自分がフォローをしているユーザー
   #has_many :following_user, through: :follower, source: :followed
   #自分がフォローをされているユーザー
@@ -37,15 +40,15 @@ class User < ApplicationRecord
   #相手からの通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
   #フォロー通知
-  def create_notification_follow(current_user)
+  #def create_notification_follow(current_user)
     #すでに「フォロー」済か確認、「フォロー」した際に1度だけ通知が行く
-    temp = Notification.where(['visiter_id = ? and visited_id = ? and action = ?', current_user.id, 'follow'])
+    #temp = Notification.where(['visiter_id = ? and visited_id = ? and action = ?', current_user.id, 'follow'])
     #まだ「フォロー」されていない場合、通知レコードを作る
-    if temp.blank?
-      notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
-      notification.save if notification.valid?
-    end
-  end
+    #if temp.blank?
+      #notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
+      #notification.save if notification.valid?
+    #nd
+  #end
   ###バリデーション
   #ニックネーム(15字以内)
   validates :nickname, presence: true, length: { maximum: 15 }

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     ##アクション制限
     before_action :authenticate_user!, except: [:index, :show]
+    ##PV機能(IPアドレスで計測)
+    impressionist :action => [:show], :unique => [:impressionable_id, :ip_address]
 
 	def index
 		@posts = Post.all
@@ -9,6 +11,8 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		##PV機能
+		impressionist(@post, nil, unique: [:impressionable_id, :ip_address])
         #投稿に紐付くタグの取得
 		#@post_tags = @post.tags
 		@comment = Comment.new
@@ -58,6 +62,7 @@ class PostsController < ApplicationController
 		   flash[:notice] = '削除に成功しました'
 		   redirect_to posts_path
 		else
+			flash[:alert] = '削除に失敗しました'
 			render :index
 		end
 	end

@@ -50,6 +50,8 @@ class Post < ApplicationRecord
 		end
 		notification.save if notification.valid?
 	end
+	##PV機能
+	is_impressionable counter_cache: true
 	##タグ機能
 	#has_many :tags, through: :post_tags
 	#has_many :post_tags, dependent: :destroy

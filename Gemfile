@@ -66,6 +66,8 @@ gem 'refile-mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+#PV機能
+gem 'impressionist', '~>1.6.1'
 group :production do
   gem 'mysql2'
 end

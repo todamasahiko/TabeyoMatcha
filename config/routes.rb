@@ -8,14 +8,22 @@ Rails.application.routes.draw do
 
   	get '/' => 'homes#top', as: 'top'
   	get '/about' => 'homes#about', as: 'about'
-  	resources :users, only: [:show, :edit, :update] #do
+  	resources :users, only: [:show, :edit, :update] do
   		#resource :relationships, only: [:create, :destroy]
+      #フォローをする
   		#get 'follows' => 'relationships#follower'
+      #フォローを外す
   		#get 'followers' => 'relationships#followed'
-  	#end
+      ##DN機能
+      resources :messages, only: [:create, :destroy]
+      resources :rooms, only: [:show, :create]
+  	end
+    ##問い合わせ機能
   	resources :inquiries, only: [:new]
   	resources :posts do
+      ##コメント機能
   		resources :comments, only: [:create, :destroy]
+      ##いいね機能
   		resource :likes, only: [:create, :destroy]
   		#resource :bookmarks, only: [:create, :destroy]
   	end
