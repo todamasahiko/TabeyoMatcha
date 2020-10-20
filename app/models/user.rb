@@ -6,11 +6,15 @@ class User < ApplicationRecord
 		     :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   attachment :profile_image
+  ##コメント機能
   has_many :comments, dependent: :destroy
+  ##いいね機能
   has_many :likes
+  #自分が「いいね」した投稿を取得する
+  has_many :like_posts, through: :likes, source: :post
   ##DM機能
-  has_many :messaages, dependent: :destroy
-  has_many :entries, dependent: :destroy
+  #has_many :messaages, dependent: :destroy
+  #has_many :entries, dependent: :destroy
   #has_many :like_posts, through: :likes
   #has_many :bookmarks, dependent: :destroy
   ##フォロー・フォロワー機能

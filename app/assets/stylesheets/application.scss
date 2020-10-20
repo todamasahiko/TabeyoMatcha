@@ -16,45 +16,50 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-* {
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
-.clearfix {
-  content: "";
-  clear: both;
-  display: block;
+header, footer {
+  font-family: 'Architects Daughter', cursive;
 }
-
 header {
   width: 100%;
-  height: 70px;
-  background-color: #00FF00;
-}
-.container {
-  width: 1024px;
-  height: 70px;
+  height: 100px;
+  padding: 15px 0;
   margin: 0 auto;
   background-color: #00FF00;
+  text-align: center;
 }
-.nav {
-  float: right;
+.headline {
+  font-size: 50px;
 }
 .nav-list {
-  float: left;
-  width: 120px;
+  padding: 10px 0;
+  margin-left: 550px;
+  display: flex;
 }
-
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+.fas fa-circle {
+  color: #FF3366;
+}
+main {
+  flex: 1;
+}
 footer {
   width: 100%;
-  height: 60px;
+  height: 50px;
   background-color: #00FF00;
-  position: absolute;
-  bottom: 0;
+  text-align: center;
 }
 .footer-text {
   text-align: center;
-  color: #FAFAFA;
-  line-height: 60px;
+  color: #000000;
+  line-height: 50px;
 }

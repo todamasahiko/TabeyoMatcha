@@ -1,15 +1,17 @@
-<div class="container">
-	<div class="row">
-		<h4>コメント一覧</h4>
-		<% comments.each do |comment| %>
-			<%= comment.user.nickname %>
-			<%= comment.content %>
-			<!--時刻表示-->
-			<%= date_format(comment.created_at) %>
-			<!--ログイン（投稿）ユーザーのみ-->
-			<% if comment.user == current_user %>
-				<%= link_to 'コメントを削除する', post_comment_path(@post, comment), method: :delete, class: 'btn btn-danger', data: {confirm: 'コメントを削除します。よろしいですか？'} %>
-			<% end %>
+<div class="comment-list">
+	<h4>コメント一覧</h4>
+	<% comments.each do |comment| %>
+	  <%= link_to user_path(@post.user) do %>
+	    <i class="fas fa-user-alt" aria-hidden="true"></i> <%= comment.user.nickname %>
+	  <% end %>
+	  <i class="fas fa-comment" aria-hidden="true"></i> <%= comment.content %>
+	  <!--時刻表示-->
+	  <i class="fas fa-history" aria-hidden="true"></i> <%= date_format(comment.created_at) %>
+	  <!--ログイン（投稿）ユーザーのみ-->
+	  <% if comment.user == current_user %>
+		<%= link_to post_comment_path(@post, comment), method: :delete, data: {confirm: 'コメントを削除します。よろしいですか？'} do %>
+		  <i class="fas fa-trash" aria-hidden="true"></i>
 		<% end %>
-	</div>
+	  <% end %>
+	<% end %>
 </div>

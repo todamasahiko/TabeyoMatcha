@@ -1,41 +1,78 @@
 <header>
-  <div class="container clearfix">
-    <span><%= link_to 'TabeyoMatcha', top_path, class: 'btn btn-default' %></span>
-
-    <nav>
-      <ul class="nav">
-        <!--ログインしている場合-->
-        <% if user_signed_in? %>
-          <% if unchecked_notifications.any? %>
-          <% end %>
-          <li class="nav-list">
-            <%= link_to 'My profile', user_path(current_user.id), class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to '通知', notifications_path, class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to 'お問い合わせ', new_inquiry_path, class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-default', data: {confirm: 'ログアウトします。よろしいですか？'} %>
-          </li>
-        <!--ログインしていない場合-->
-        <% else %>
-          <li class="nav-list">
-            <%= link_to 'Top', top_path, class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to 'About', about_path, class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-default' %>
-          </li>
-          <li class="nav-list">
-            <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-default' %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
+  <div class="headline">
+    TabeyoMatcha
   </div>
 </header>
+
+<nav>
+  <ul class="nav-list">
+    <!--ログインしている場合-->
+    <% if user_signed_in? %>
+      <!--未確認の通知を知らせる-->
+      <% if unchecked_notifications.any? %>
+        <i class="fas fa-circle" aria-hidden="true"></i>
+      <% end %>
+
+      <li class="nav-list-item">
+        <%= link_to top_path do %>
+          <i class="fas fa-home" aria-hidden="true"></i> Top
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to posts_path do %>
+          <i class="fas fa-list" aria-hidden="true"></i> 投稿一覧
+        <% end %>
+      </li>
+
+
+      <li class="nav-list-item">
+        <%= link_to user_path(current_user.id) do %>
+          <i class="fas fa-user-alt" aria-hidden="true"></i> My profile
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to notifications_path do %>
+          <i class="fas fa-bell" aria-hidden="true"></i> 通知
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトします。よろしいですか？'} do %>
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i> ログアウト
+        <% end %>
+      </li>
+      <!--ログインしていない場合-->
+    <% else %>
+      <li class="nav-list-item">
+        <%= link_to top_path do %>
+          <i class="fas fa-home" aria-hidden="true"></i> Top
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to about_path do %>
+          <i class="fas fa-newspaper" aria-hidden="true"></i> About
+        <% end %>
+      </li>
+      <li class="nav-list-item">
+        <%= link_to posts_path do %>
+        <i class="fas fa-list" aria-hidden="true"></i> 投稿一覧
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to new_user_registration_path do %>
+       　  <i class="fas fa-user-plus" aria-hidden="true"></i> 新規登録
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to new_user_session_path do %>
+          <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ログイン
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

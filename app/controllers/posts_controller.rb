@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     ##アクション制限
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index]
     ##PV機能(IPアドレスで計測)
     impressionist :action => [:show], :unique => [:impressionable_id, :ip_address]
 
@@ -66,6 +66,12 @@ class PostsController < ApplicationController
 			render :index
 		end
 	end
+	##タグ検索機能
+	#def tag
+		#@user = current_user
+		#@tag = Tag.find_by(name: params[:name])
+		#tag_content = Tag.find(params[:id])
+	#end
     ##ストロングパロメーター
 	private
 	def post_params

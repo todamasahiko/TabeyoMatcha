@@ -13,47 +13,47 @@
 <!---->
 <div class="container">
   <div class="row">
-  	<div class="">
-<h2>タグ検索一覧</h2>
-  <% @posts.each do |post| %>
-    <% post.tag_content.split(' ').each do |tag| %>
-      <%= link_to tag, "/search?tag_name=#{tag.gsub('#', '')}" %>
-    <% end %>
-    <%#= link_to post.tag_content, posts_path %>
-  <% end %>
-
-  <div class="col-xs-10">
-      <%= link_to '投稿一覧', posts_path %>
-
-      <h4>投稿者ランキング</h4>
+      <%#h4>投稿者ランキング</h4>
       <%#= @all_ranks.each do |user| %>
         <%#= link_to user_path(user.id) do %>
           <%#= attachment_image_tag user, :profile_image, size: '300x200' %>
         <%# end %>
-        <p><%#= link_to post.user.nickname, user_path(post.user) %></p>
+        <%#= link_to post.user.nickname, user_path(post.user) %>
       <%# end %>
+      <div class="col-md-6">
+        <div class="impression-rank">
+          <h4 class="rank-title">PV数ランキング</h4>
+          <% @all_ranks.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag post, :image, size: '300x200' %>
+            <% end %>
 
-      <h4>PV数ランキング</h4>
-      <%= @all_ranks.each do |post| %>
-        <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, size: '300x200' %>
-        <% end %>
-        <p><%= link_to post.user.nickname, user_path(post.user) %></p>
-        <p><label>PV数</label><%= post.impressionist_count%></p>
-      <% end %>
+            <%= link_to user_path(post.user) do %>
+              <i class="fas fa-user-alt" aria-hidden="true"></i><p><%= post.user.nickname %></p>
+            <% end %>
+            <i class="far fa-eye" aria-hidden="true"></i><%= post.impressionist_count%>
+          <% end %>
+        </div>
 
-      <h4>いいねランキング</h4>
-      <%= @all_ranks.each do |post| %>
-        <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, size: '300x200' %>
-        <% end %>
-            <p><%= link_to post.user.nickname, user_path(post.user) %></p>
-            <p><label>いいね数</label><%= post.likes.count%></p>
-      <% end %>
-    </div>
-  </div>
+        <div class="like-rank">
+          <h4 class="rank-title">いいねランキング</h4>
+          <% @all_ranks.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag post, :image, size: '300x200' %>
+            <% end %>
 
-  <div class="row">
-    <%= link_to '新規投稿', new_post_path, class: 'btn btn-success btn-lg' %>
+            <%= link_to user_path(post.user) do %>
+              <i class="fas fa-user-alt" aria-hidden="true"></i><%= post.user.nickname %>
+            <% end %>
+            <i class="fas fa-heart" aria-hidden="true"></i><%= post.likes.count %>
+          <% end %>
+        </div>
+
+        <div class="action">
+          <%= link_to new_post_path do %>
+            <i class="fas fa-pen-square" aria-hidden="true"></i> 新規投稿
+          <% end %><br>
+        </div>
+      </div>
   </div>
 </div>

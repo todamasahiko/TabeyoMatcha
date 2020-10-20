@@ -1,27 +1,31 @@
+<!--通知アクションを行なったユーザー-->
 <% visiter = notification.visiter %>
+<!--通知アクションを受け取ったユーザー-->
 <% visited = notification.visited %>
-
-<div class="">
-	<%= link_to user_path(visiter) do %>
-		<strong><%= visiter.nickname %><strong>
-	<% end %>
-	<%= 'さんが' %>
-	<% case notification.action %>
-    	<% when 'follow' then %>
-			<%= 'あなたをフォローしました' %>
-		<% when 'like' then %>
+<!---->
+<!--通知機能-->
+<%= link_to user_path(visiter) do %>
+	<i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= visiter.nickname %><strong>
+<% end %>
+<%= 'さんが' %>
+<!--アクション毎に区別-->
+<% case notification.action %>
+    <%# when 'follow' then %>
+		<%#= 'あなたをフォローしました' %>
+	<% when 'like' then %>
+		<%= link_to 'あなたの投稿', notification.post %>
+		<%= 'にいいねしました' %>
+		<i class="fas fa-history" aria-hidden="true"></i> <%= date_format(notification.created_at).upcase %><br>
+	<!--「コメント」の場合-->
+	<% when 'comment' then %>
+		<% if notification.post.user_id == visited.id %>
 			<%= link_to 'あなたの投稿', notification.post %>
-			<%= 'にいいねしました' %>
-		<% when 'comment' then %>
-			<% if notification.post.user_id == visited.id %>
-				<%= link_to 'あなたの投稿', notification.post %>
-			<% else %>
-				<%= link_to post_path(notification.post) do %>
-					<strong><%= notification.post.user.nickname + 'さんの投稿' %></strong>
-                <% end %>
+		<% else %>
+			<%= link_to post_path(notification.post) do %>
+				<i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= notification.post.user.nickname + 'さんの投稿' %></strong>
             <% end %>
-			<%= 'にコメントしました' %>
-			<%= Comment.find_by(id: notification.comment_id)&.content %>
-			<%= date_format(notification.created_at).upcase %>
-      <% end %>
-</div>
+        <% end %>
+        <%= 'にコメントしました' %>
+		<%= Comment.find_by(id: notification.comment_id)&.content %>
+		<i class="fas fa-history" aria-hidden="true"></i> <%= date_format(notification.created_at).upcase %>
+<% end %>

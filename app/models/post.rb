@@ -18,7 +18,7 @@ class Post < ApplicationRecord
 	#いいね通知
 	def create_notification_like(curret_user)
 		#すでに「いいね」済みか確認、「いいね」した際に1度だけ通知が行く
-		temp = Notifications.where(['visiter_id = ? and visited_id = ? and post_id = ? and action = ?', curret_user.id, user_id, id, 'like'])
+		temp = Notification.where(['visiter_id = ? and visited_id = ? and post_id = ? and action = ?', curret_user.id, user_id, id, 'like'])
 		#まだ「いいね」されていない場合、通知レコードを作る
 		if temp.blank?
 			notification = curret_user.active_notifications.new(post_id: id, visited_id: user_id, action: 'like')
@@ -55,6 +55,32 @@ class Post < ApplicationRecord
 	##タグ機能
 	#has_many :tags, through: :post_tags
 	#has_many :post_tags, dependent: :destroy
+	#新規投稿時
+	#after_create do
+		#作成した投稿を探す
+		#post = Post.find_by(id: id)
+		#tag_contentに入力されたタグを取得する
+		#tags = tag_content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+		#map文によって、複数のタグをpostに保存させる
+		#tags.uniq.map do |tag|
+			#Tagがすでに存在しているかを確認、なければ新規作成する
+			#大文字から小文字へ変換、タグは先頭の「#」を外した状態で保存する
+			#tag = Tag.find_or_create_by(name: tag.downcase.delete('#'))
+			#1つの投稿に対して、複数のタグを一度で保存する
+			#post.tags << tag
+		#end
+	#end
+	#更新時
+	#before_update do
+		#post = Post.find_by(id: id)
+		#一度タグを削除する
+		#post.tags.clear
+		#tags = tag_content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+		#tags.uniq.map do |tag|
+			#tag = Tag.find_or_create_by(name: tag.downcase.delete('#'))
+			#post.tags << tag
+		#end
+	#end
 	##ブックマーク機能
 	#has_many :bookmarks, dependent: :destroy
 	#def bookmarked_by?(user)
