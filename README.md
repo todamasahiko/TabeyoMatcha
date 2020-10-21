@@ -1,24 +1,39 @@
-# README
+# TabeyoMatcha
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+抹茶に関する情報交換・共有サイト兼SNS
 
-Things you may want to cover:
+### サイトテーマ
+「抹茶で楽しく、幸せに」
 
-* Ruby version
+### テーマを選んだ理由
+抹茶を通じて、楽しく幸せな気持ちになれたことがあった。同じように好きな人同士のコミュニティーの場があれば素敵だと感じたから。
 
-* System dependencies
+### ターゲットユーザー
+①老若男女問わず、抹茶が好きなユーザー
+②抹茶が苦手、もしくはまだ食べたことのないユーザー
 
-* Configuration
+### 主な利用シーン
+①食事前の下調べ
+②話題作り
+③贈り物前の品定め
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1urawuHSUWe8x_M_t7M7gSa1qpihRQuXkw6oTpj-M1XI/edit#gid=0
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
+- 本番環境：AWS
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+Unsplash https://unsplash.com/
+Pexels https://www.pexels.com/ja-jp/
+写真AC https://www.photo-ac.com/
+Pixabay https://pixabay.com/ja/
+Foodiesfeed https://www.foodiesfeed.com/
