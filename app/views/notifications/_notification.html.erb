@@ -5,7 +5,7 @@
 <!---->
 <!--通知機能-->
 <%= link_to user_path(visiter) do %>
-	<i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= visiter.nickname %><strong>
+	<p><i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= visiter.nickname %><strong>
 <% end %>
 <%= 'さんが' %>
 <!--アクション毎に区別-->
@@ -28,4 +28,5 @@
         <%= 'にコメントしました' %>
 		<%= Comment.find_by(id: notification.comment_id)&.content %>
 		<i class="fas fa-history" aria-hidden="true"></i> <%= date_format(notification.created_at).upcase %>
+	</p>
 <% end %>

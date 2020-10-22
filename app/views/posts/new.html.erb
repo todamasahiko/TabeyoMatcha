@@ -1,35 +1,34 @@
-<!--メッセージ-->
-<% if flash[:alert] %>
-	<div class="flash">
-		<%= flash[:alert] %>
-	</div>
-<% end %>
-<!---->
 <div class="container">
 	<div class="row">
 		<div class="post-form">
 			<%= form_with(model: @post, local: true) do |f| %>
+				<!--フラッシュメッセージ-->
+				<% if flash[:alert] %>
+					<div class="flash" style="font-size: 25px; color: #FF0000; text-align: center;">
+						<%= flash[:alert] %>
+					</div>
+				<% end %>
 				<!--エラーメッセージ-->
 				<% if @post.errors.any? %>
-					<div id="error-explanation">
+					<div id="error-explanation" style="color: #FF0000; text-align: center;">
 						<h4><%= @post.errors.count %>件のエラーが発生しました。</h4>
 						<ul>
 							<% @post.errors.full_messages.each do |message| %>
-								<li><%= message %></li>
+								<li class="error-message-list"><%= message %></li>
 							<% end %>
 						</ul>
 					</div>
 				<% end %>
 
-				<div class="field">
+				<div class="field" style="padding-top: 30px; padding-left: 500px;">
 					<%= f.attachment_field :image %>
 				</div>
 
-				<div class="field">
+				<div class="field" style="text-align: center; padding-top: 5px;">
 					<%= f.text_area :content, size: '90x5', placeholder: '投稿内容' %>
 				</div>
 
-				<div class="field">
+				<div class="field" style="text-align: center;">
 					<%= f.text_area :tag_content, size: '90x5', placeholder: '投稿タグ 例)#美味しい #美しい' %>
 				</div>
 

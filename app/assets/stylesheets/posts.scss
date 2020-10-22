@@ -2,20 +2,194 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.post-action {
-	margin-left: 520px;
+.post-list {
 	padding-top: 50px;
+	text-align: center;
+	.Nicknamelink {
+		text-decoration: none;
+		color: #0000FF;
+	}
+	.PostEditlink {
+		text-decoration: none;
+		color: #0000FF;
+	}
+	.PostDeletelink {
+		text-decoration: none;
+		color: #FF0000;
+	}
+}
+.img-wrap1 {
+	overflow: hidden;
+	position: relative;
+}
+.img-wrap1:before,
+.img-wrap1:after {
+	animation: 2s cubic-bezier(.4, 0, .2, 1) forwards;
+	background: #FFF;
+	content: "";
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	z-index: 1;
+}
+.img-wrap1:before {
+	animation-name: img-wrap1-before;
+	top: 0;
+	bottom: 50%;
+}
+.img-wrap1:after {
+	animation-name: img-wrap1-after;
+	top: 50%;
+	bottom: 0;
+}
+@keyframes img-wrap1-before {
+	100% {
+	transform: translateX(100%);
+	}
+}
+@keyframes img-wrap1-after {
+	100% {
+	transform: translateX(-100%);
+	}
+}
+
+.img-wrap2 {
+	overflow: hidden;
+	position: relative;
+}
+.img-wrap2:before,
+.img-wrap2:after {
+	animation: 2s cubic-bezier(.4, 0, .2, 1) forwards;
+	background: #FFF;
+	content: "";
+	bottom: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+}
+.img-wrap2:before {
+	animation-name: img-wrap2-before;
+	left: 0;
+	right: 50%;
+}
+.img-wrap2:after {
+	animation-name: img-wrap2-after;
+	left: 50%;
+	right: 0;
+}
+@keyframes img-wrap2-before {
+	100% {
+	transform: translateY(100%);
+	}
+}
+@keyframes img-wrap2-after {
+	100% {
+	transform: translateY(-100%);
+	}
+}
+.like-btn {
+	width: 25px;
+	height: 30px;
+	font-size: 50px;
+	color: #FF88FF;
+}
+.unlike-btn {
+	width: 25px;
+	height: 30px;
+	font-size: 50px;
+	color: #E54747;
+}
+.like-color {
+	color: #FF88FF;
+}
+.comment-color {
+	color: #008080;
+}
+.content-color {
+	color: #5507FF;
+}
+.tag-color {
+	color: #FF8856;
+}
+.impression-color {
+	color: #800080;
+}
+.time-color {
+	color: #000080;
 }
 .post-form {
 	padding-top: 50px;
 }
 .comment-list {
 	padding-top: 50px;
+	.Comment-delete {
+		text-decoration: none;
+		color: #FF0000;
+	}
+}
+.comment-title {
+	background:linear-gradient(transparent 50%, #D0B0FF 0%);
 }
 .comment-form {
 	padding-top: 50px;
+	padding-left: 10px;
+}
+.button {
+  font-size: 30px;
+  background-color: #2C7CFF;
+  color: #000000;
+  display: inline-block;
+  transition: .5s;
+  opacity: 1;
+}
+.button:hover {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
 }
 .new-action {
-	padding-left: 275px;
-	padding-top: 100px;
+	padding-top: 50px;
+	text-align: center;
+}
+.error-message-list {
+	list-style: none;
+}
+.image-form {
+	padding-top: 30px;
+	padding-left: 500px;
+}
+.post-edit-action, .fa-edit {
+  font-size: 30px;
+}
+.post-edit-action span {
+  display: inline-block;
+  transition: .5s;
+}
+.post-edit-action:hover span {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
+.post-delete-action, .fa-trash {
+  font-size: 30px;
+}
+.post-delete-action span {
+  display: inline-block;
+  transition: .5s;
+}
+.post-delete-action:hover span {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
+.new-post-action, .fa-pen-square {
+  text-shadow: 2px 2px 1px #00FF00;
+  font-size: 30px;
+}
+.new-post-action span {
+  display: inline-block;
+  transition: .5s;
+}
+.new-post-action:hover span {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
 }

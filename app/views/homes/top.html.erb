@@ -1,16 +1,23 @@
-<!--メッセージ-->
+<!--フラッシュメッセージ-->
+<!--ログイン時-->
+<% if flash[:success] %>
+  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+<!--新規登録時-->
 <% if flash[:notice] %>
-  <div class="flash">
+  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
     <%= flash[:notice] %>
   </div>
 <% end %>
-
-<% if flash[:alert] %>
-  <div class="flash">
-    <%= flash[:alert] %>
+<!--ログアウト時-->
+<% if flash[:logout] %>
+  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
+    <%= flash[:logout] %>
   </div>
 <% end %>
-<!---->
+
 <div class="container">
   <div class="row">
       <%#h4>投稿者ランキング</h4>
@@ -20,38 +27,40 @@
         <%# end %>
         <%#= link_to post.user.nickname, user_path(post.user) %>
       <%# end %>
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="impression-rank">
-          <h4 class="rank-title">PV数ランキング</h4>
-          <% @all_ranks.each do |post| %>
+          <h4><span class="rank-title1">PV数ランキング</span></h4>
+          <% @all_ranks.each.with_index(1) do |post, i| %>
+            <p><span class="rank-number1">[第<%= i %>位]</span></p>
             <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, size: '300x200' %>
+              <div class="img-wrap"><%= attachment_image_tag post, :image, size: '400x300' %></div>
             <% end %>
 
-            <%= link_to user_path(post.user) do %>
-              <i class="fas fa-user-alt" aria-hidden="true"></i><p><%= post.user.nickname %></p>
+            <p><%= link_to user_path(post.user), class: 'Nicknamelink' do %>
+              <i class="fas fa-user-alt" aria-hidden="true"></i> <%= post.user.nickname %>
             <% end %>
-            <i class="far fa-eye" aria-hidden="true"></i><%= post.impressionist_count%>
-          <% end %>
+            <i class="far fa-eye impression-color" aria-hidden="true"></i> <span class="impression-color"><%= post.impressionist_count %></span>
+          <% end %></p>
         </div>
 
         <div class="like-rank">
-          <h4 class="rank-title">いいねランキング</h4>
-          <% @all_ranks.each do |post| %>
+          <h4><span class="rank-title2">いいねランキング</span></h4>
+          <% @all_ranks.each.with_index(1) do |post, i| %>
+            <p><span class="rank-number2">[第<%= i %>位]</span></p>
             <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, size: '300x200' %>
+              <div class="img-wrap"><%= attachment_image_tag post, :image, size: '400x300' %></div>
             <% end %>
 
-            <%= link_to user_path(post.user) do %>
+            <p><%= link_to user_path(post.user), class: 'Nicknamelink' do %>
               <i class="fas fa-user-alt" aria-hidden="true"></i><%= post.user.nickname %>
             <% end %>
-            <i class="fas fa-heart" aria-hidden="true"></i><%= post.likes.count %>
-          <% end %>
+            <i class="fas fa-heart like-color" aria-hidden="true"></i><span class="like-color"><%= post.likes.count %></span>
+          <% end %></p>
         </div>
 
-        <div class="action">
-          <%= link_to new_post_path do %>
-            <i class="fas fa-pen-square" aria-hidden="true"></i> 新規投稿
+        <div class="new-post-action">
+          <%= link_to new_post_path, class: 'PostNewlink' do %>
+            <i class="fas fa-pen-square" aria-hidden="true"></i> <span>新規投稿</span>
           <% end %><br>
         </div>
       </div>

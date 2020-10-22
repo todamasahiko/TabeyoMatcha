@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -66,6 +69,10 @@ gem 'refile-mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+#deviseの日本語化
+gem 'devise-i18n'
+#deviseのview画面の日本語化
+gem 'devise-i18n-views'
 #PV機能
 gem 'impressionist', '~>1.6.1'
 group :production do

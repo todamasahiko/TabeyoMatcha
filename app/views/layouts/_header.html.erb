@@ -14,63 +14,63 @@
       <% end %>
 
       <li class="nav-list-item">
-        <%= link_to top_path do %>
-          <i class="fas fa-home" aria-hidden="true"></i> Top
+        <%= link_to top_path, class: 'Toplink' do %>
+          <i class="fas fa-home" aria-hidden="true"></i> <span>Top</span>
         <% end %>
       </li>
 
       <li class="nav-list-item">
-        <%= link_to posts_path do %>
-          <i class="fas fa-list" aria-hidden="true"></i> 投稿一覧
+        <%= link_to posts_path, class: 'Postlink' do %>
+          <i class="fas fa-list" aria-hidden="true"></i> <span>投稿一覧</span>
         <% end %>
       </li>
 
 
       <li class="nav-list-item">
-        <%= link_to user_path(current_user.id) do %>
-          <i class="fas fa-user-alt" aria-hidden="true"></i> My profile
+        <%= link_to user_path(current_user.id), class: 'Myprofilelink' do %>
+          <i class="fas fa-user-alt" aria-hidden="true"></i> <span>My profile</span>
         <% end %>
       </li>
 
       <li class="nav-list-item">
-        <%= link_to notifications_path do %>
-          <i class="fas fa-bell" aria-hidden="true"></i> 通知
+        <%= link_to notifications_path, class: 'Notificationlink' do %>
+          <i class="fas fa-bell" aria-hidden="true"></i> <sapn>通知</sapn>
         <% end %>
       </li>
 
       <li class="nav-list-item">
-        <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトします。よろしいですか？'} do %>
-          <i class="fas fa-sign-out-alt" aria-hidden="true"></i> ログアウト
+        <%= link_to destroy_user_session_path, method: :delete, data: {confirm: 'ログアウトします。よろしいですか？'}, class: 'Logoutlink' do %>
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i> <span>ログアウト</span>
         <% end %>
       </li>
       <!--ログインしていない場合-->
     <% else %>
       <li class="nav-list-item">
-        <%= link_to top_path do %>
-          <i class="fas fa-home" aria-hidden="true"></i> Top
+        <%= link_to top_path, class: 'Toplink' do %>
+          <i class="fas fa-home" aria-hidden="true"></i> <span>Top</span>
         <% end %>
       </li>
 
       <li class="nav-list-item">
-        <%= link_to about_path do %>
-          <i class="fas fa-newspaper" aria-hidden="true"></i> About
+        <%= link_to about_path, class: 'Aboutlink' do %>
+          <i class="fas fa-newspaper" aria-hidden="true"></i> <span>About</span>
         <% end %>
       </li>
       <li class="nav-list-item">
-        <%= link_to posts_path do %>
-        <i class="fas fa-list" aria-hidden="true"></i> 投稿一覧
-        <% end %>
-      </li>
-
-      <li class="nav-list-item">
-        <%= link_to new_user_registration_path do %>
-       　  <i class="fas fa-user-plus" aria-hidden="true"></i> 新規登録
+        <%= link_to posts_path, class: 'Postlink' do %>
+        <i class="fas fa-list" aria-hidden="true"></i> <span>投稿一覧</span>
         <% end %>
       </li>
 
       <li class="nav-list-item">
-        <%= link_to new_user_session_path do %>
-          <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ログイン
+        <%= link_to new_user_registration_path, class: 'PostNewlink' do %>
+       　  <i class="fas fa-user-plus" aria-hidden="true"></i> <span>新規登録</span>
+        <% end %>
+      </li>
+
+      <li class="nav-list-item">
+        <%= link_to new_user_session_path, class: 'Loginlink' do %>
+          <i class="fas fa-sign-in-alt" aria-hidden="true"></i> <span>ログイン</span>
         <% end %>
       </li>
     <% end %>

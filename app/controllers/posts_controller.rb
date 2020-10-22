@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     	#tag_list = params[:post][:name].split(nil)
     	if @post.save
     	   #@post.save_tag(tag_list)
-    	   flash[:notice] = '投稿に成功しました'
+    	   flash[:notice] = '投稿ありがとう！'
     	   redirect_to posts_path
     	else
     	   flash[:alert] = '投稿に失敗しました'

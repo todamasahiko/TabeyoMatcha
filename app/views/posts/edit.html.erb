@@ -1,20 +1,21 @@
 <div class="container">
 	<div class="row">
 		<%= form_with(model: @post, local: true) do |f| %>
-			<h4>投稿編集画面</h4>
-				<div class="field">
-					<%= attachment_image_tag @post, :image, size: '300x200' %>
-					<%= f.attachment_field :image %>
+				<div class="field" style="text-align: center; padding-top: 30px;">
+					<%= attachment_image_tag @post, :image, size: '600x500' %>
+					<div class="image-form">
+						<%= f.attachment_field :image %>
+					</div>
 				</div>
 
-				<div class="field">
-					<label>投稿内容</label>
-					<%= f.text_area :content, placeholder: '投稿内容' %>
+				<div class="field" style="text-align: center; padding-top: 5px;">
+					<i class="far fa-file" aria-hidden="true"></i>
+					<%= f.text_area :content, size: '90x5', placeholder: '投稿内容' %>
 				</div>
 
-				<div class="field">
-					<label>投稿タグ</label>
-					<%= f.text_area :tag_content, placeholder: '投稿タグ' %>
+				<div class="field" style="text-align: center;">
+					<i class="fas fa-tags" aria-hidden="true"></i>
+					<%= f.text_area :tag_content, size: '90x5', placeholder: '投稿タグ' %>
 				</div>
 
 				<div class="action">

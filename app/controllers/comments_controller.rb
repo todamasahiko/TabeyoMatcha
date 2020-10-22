@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		@comment.post_id = @post.id
 		if @comment.save
 		   @post.create_notification_comment(current_user, @comment.id) #コメント通知
-		   flash[:success] = 'コメントしました'
+		   flash[:success] = 'コメントありがとう！'
 		   redirect_to post_path(@post)
 		else
 		   flash[:failure] = 'コメントできませんでした'

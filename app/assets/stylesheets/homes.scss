@@ -3,13 +3,95 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .impression-rank {
-	display: flex;
 	padding-top: 50px;
+	.Nicknamelink {
+		text-decoration: none;
+		color: #0000FF;
+	}
+}
+.rank-title1, .rank-number1 {
+	background:linear-gradient(transparent 50%, #D0B0FF 0%);
+}
+.rank-title2, .rank-number2 {
+	background:linear-gradient(transparent 50%, #FFAAFF 0%);
+}
+.img-wrap {
+	animation: img-wrap 2s cubic-bezier(.4, 0, .2, 1);
+}
+@keyframes img-wrap {
+	0% {
+		clip-path: circle(0 at 50% 50%);
+		-webkit-clip-path: circle(0 at 50% 50%);
+	}
+	100% {
+		clip-path: circle(100% at 50% 50%);
+		-webkit-clip-path: circle(100% at 50% 50%);
+	}
 }
 .like-rank {
-	display: flex;
+	padding-top: 50px;
+	.Nicknamelink {
+		text-decoration: none;
+		color: #0000FF;
+	}
 }
-.action {
+.new-post-action {
 	margin-left: 520px;
-	padding-top: 25px;
+	color: #00FF00;
+  	border-radius: 7px;
+  	display: inline-block;
+  	height: 50px;
+  	width: 190px;
+  	text-align: center;
+  	font-size: 30px;
+  	line-height: 50px;
+  	background: #00FF00;
+  	overflow: hidden;
+  	.PostNewlink {
+  		display: block;
+  		text-decoration: none;
+  		color: #000000;
+  	}
+}
+.btn-new-post-action, .fa-pen-square {
+  text-shadow: 2px 2px 1px #00FF00;
+  font-size: 30px;
+}
+.btn-new-post-action span {
+  display: inline-block;
+  transition: .5s;
+}
+.btn-new-post-action:hover span {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
+.site-introduction {
+	text-align: center;
+	padding-top: 30px;
+}
+.site-introduction1, .site-introduction2, .site-introduction3, .site-introduction4, .site-introduction5 {
+	background:linear-gradient(transparent 50%, #78FF94 0%);
+}
+.function-introduction {
+	text-align: center;
+	padding-top: 30px;
+}
+.charm-introduction {
+	text-align: center;
+	padding-top: 30px;
+}
+.login-function1, .login-function2 {
+	background:linear-gradient(transparent 50%, #00FF00 0%);
+}
+.login-only, .nologin-ok {
+	text-decoration: underline wavy black
+}
+.no-login-function {
+	padding-top: 10px;
+}
+.no-login-function1, .no-login-function2 {
+	background:linear-gradient(transparent 50%, #00DD00 0%);
+}
+.charm-introduction1, .charm-introduction2, .charm-introduction3 {
+	background:linear-gradient(transparent 50%, #78FF94 0%);
 }

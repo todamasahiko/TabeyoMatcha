@@ -1,52 +1,59 @@
-<!--メッセージ-->
-<% if flash[:success] %>
-  <div class="flash">
-    <%= flash[:success] %>
-  </div>
-<% end %>
-
-<% if flash[:failure] %>
-  <div class="flash">
-    <%= flash[:failure] %>
-  </div>
-<% end %>
-<!---->
 <div class="container">
 	<div class="row">
-        <%= attachment_image_tag @post, :image, size: '300x200' %>
-        <%= link_to user_path(@post.user) do %>
-          <i class="fas fa-user-alt" aria-hidden="true"></i> <%= @post.user.nickname %>
-        <% end %>
-        <i class="far fa-file" aria-hidden="true"></i> <%= @post.content %>
-        <i class="fas fa-tags" aria-hidden="true"></i> <%= @post.tag_content %>
-        <i class="fas fa-comment" aria-hidden="true"></i> <%= @post.comments.count %>
-        <i class="fas fa-heart" aria-hidden="true"></i> <%= @post.likes.count%>
-        <i class="far fa-eye" aria-hidden="true"></i> <%= @post.impressionist_count %>
-        <!--時間表示-->
-        <i class="fas fa-history" aria-hidden="true"></i> <%= date_format(@post.created_at) %>
-        <!---コメント一覧-->
-        <%= render 'posts/comment', comments: @post.comments %>
-        <!--コメント機能-->
-        <% if user_signed_in? %>
-            <div class="comment-form">
-                <%= form_with(model: [@post, @comment], local: true) do |f| %>
-                    <%= f.text_area :content, size: '90x5', placeholder: 'コメントをご記入ください' %>
-                    <%= f.submit 'コメントする', class: 'btn btn-primary' %>
-                <% end %>
-            </div>
-        <% end %>
-        <!--いいね機能-->
-        <%= render 'posts/like', post: @post %>
-        <!--ログイン（投稿）ユーザーのみ-->
-    	<% if @post.user == current_user %>
-    		<div class="action">
-    			<%= link_to edit_post_path(@post.id) do %>
-                    <i class="fas fa-edit" aria-hidden="true"></i> 編集する
-                <% end %>
-    			<%= link_to post_path, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'} do %>
-                    <i class="fas fa-trash" aria-hidden="true"></i> 削除する
-                <% end %>
-            </div>
-        <% end %>
+        <div class="post-list">
+            <div class="img-wrap2"><%= attachment_image_tag @post, :image, size: '600x500' %></div>
+            <%= link_to user_path(@post.user), class: 'Nicknamelink' do %>
+              <p><i class="fas fa-user-alt" aria-hidden="true"></i> <%= @post.user.nickname %>
+            <% end %>
+            <i class="far fa-file content-color" aria-hidden="true"></i> <span class="content-color"><%= @post.content %></span>
+            <i class="fas fa-tags tag-color" aria-hidden="true"></i> <span class="tag-color"><%= @post.tag_content %></span>
+            <i class="fas fa-comment comment-color" aria-hidden="true"></i> <span class="comment-color"><%= @post.comments.count %></span>
+            <i class="fas fa-heart like-color" aria-hidden="true"></i> <span class="like-color"><%= @post.likes.count%></span>
+            <i class="far fa-eye impression-color" aria-hidden="true"></i> <span class="impression-color"><%= @post.impressionist_count %></span>
+            <!--時間表示-->
+            <i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(@post.created_at) %></span></p>
+            <!--ログイン（投稿）ユーザーのみ-->
+        	<% if @post.user == current_user %>
+        		<div class="post-action">
+                    <div class="post-edit-action">
+            			<%= link_to edit_post_path(@post.id), class: 'PostEditlink' do %>
+                            <i class="fas fa-edit" aria-hidden="true"></i> <span>編集する</span>
+                        <% end %>
+                    </div>
+
+                    <div class="post-delete-action">
+            			<%= link_to post_path, method: :delete, data: {confirm: '投稿を削除します。よろしいですか？'}, class: 'PostDeletelink' do %>
+                            <i class="fas fa-trash" aria-hidden="true"></i> <span>削除する</span>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+            <!---コメント一覧-->
+            <%= render 'posts/comment', comments: @post.comments %>
+            <!--メッセージ-->
+            <!--成功時-->
+            <% if flash[:success] %>
+              <div class="flash" style="font-size: 25px; color: #FF0000;">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
+            <!--失敗時-->
+            <% if flash[:failure] %>
+              <div class="flash" style="font-size: 25px; color: #FF0000;">
+                <%= flash[:failure] %>
+              </div>
+            <% end %>
+            <!--コメント機能-->
+            <% if user_signed_in? %>
+                <div class="comment-form">
+                    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+                        <%= f.text_area :content, size: '90x5', placeholder: 'コメントをご記入ください' %>
+                        <p><%= f.submit 'コメントする', class: 'button' %></p>
+                    <% end %>
+                </div>
+            <% end %>
+            <!--いいね機能-->
+            <%= render 'posts/like', post: @post %>
+        </div>
     </div>
 </div>

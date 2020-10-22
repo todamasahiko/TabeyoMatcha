@@ -1,6 +1,6 @@
 <!--メッセージ-->
 <% if flash[:notice] %>
-	<div class="flash">
+	<div class="flash" style="font-size: 25px; color: #FF0000; text-align: center;">
 		<%= flash[:notice] %>
 	</div>
 <% end %>
@@ -12,23 +12,23 @@
       <div class="post-list">
       	  <% @posts.each do |post| %>
       	    <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, size: '300x200' %>
+              <div class="img-wrap1"><%= attachment_image_tag post, :image, size: '300x200' %></div>
             <% end %>
 
-            <%= link_to user_path(post.user) do %>
-              <i class="fas fa-user-alt" aria-hidden="true"></i> <%= post.user.nickname %>
+            <%= link_to user_path(post.user), class: 'Nicknamelink' do %>
+              <p><i class="fas fa-user-alt" aria-hidden="true"></i> <%= post.user.nickname %>
             <% end %>
-            <i class="fas fa-tags" aria-hidden="true"></i> <%= post.tag_content %>
-            <i class="fas fa-comment" aria-hidden="true"></i> <%= post.comments.count %>
-            <i class="fas fa-heart" aria-hidden="true"></i> <%= post.likes.count%>
-            <i class="far fa-eye" aria-hidden="true"></i> <%= post.impressionist_count %>
+            <i class="fas fa-tags tag-color" aria-hidden="true"></i> <span class="tag-color"><%= post.tag_content %></span>
+            <i class="fas fa-comment comment-color" aria-hidden="true"></i> <span class="comment-color"><%= post.comments.count %></span>
+            <i class="fas fa-heart like-color" aria-hidden="true"></i> <span class="like-color"><%= post.likes.count%></span>
+            <i class="far fa-eye impression-color" aria-hidden="true"></i> <span class="impresison-color"><%= post.impressionist_count %></span>
             <!--時間表示-->
-            <i class="fas fa-history" aria-hidden="true"></i> <%= date_format(post.created_at) %>
+            <i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(post.created_at) %></span></p>
       	  <% end %>
 
-      	  <div class="post-action">
-  		      <%= link_to new_post_path do %>
-              <i class="fas fa-pen-square" aria-hidden="true"></i> 新規投稿
+      	  <div class="new-post-action">
+  		      <%= link_to new_post_path, class: 'PostNewlink' do %>
+              <i class="fas fa-pen-square" aria-hidden="true"></i> <span>新規投稿</span>
             <% end %>
   		    </div>
       </div>

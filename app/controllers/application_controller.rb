@@ -7,17 +7,17 @@ class ApplicationController < ActionController::Base
    protected
    #ログイン後の遷移先指定
    def after_sign_in_path_for(resource)
-      flash[:notice] = 'ログインに成功しました'
+      flash[:success] = 'ようこそ！ゆっくりしていってね★'
   		top_path
    end
    #新規登録後の遷移先指定
    def after_sign_up_path_for(resource)
-  		flash[:notice] = '新規登録に成功しました'
+  		flash[:notice] = '登録ありがとう！'
   		top_path
    end
    #ログアウト後の遷移先指定
    def after_sign_out_path_for(resource)
-  		flash[:alert] = 'ログアウトしました'
+      flash[:logout] = 'ありがとう！素敵な1日を♫'
   		top_path
    end
    #ストロングパロメーター
