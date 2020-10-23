@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/' => 'homes#top', as: 'top'
   get '/about' => 'homes#about', as: 'about'
   ##user
-  resources :users, only: [:show, :edit, :update] #do
+  resources :users, only: [:show, :edit, :update] do
     #resource :relationships, only: [:create, :destroy]
     #フォローをする
   	#get 'follows' => 'relationships#follower'
@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     #resources :rooms, only: [:show, :create]
     ##問い合わせ機能
     #resources :inquiries, only: [:new]
-  #end
+    #Myprofileのルーティングにネストする
+    collection do
+      get :likes
+    end
+  end
   ##post
   resources :posts do
     ##コメント機能

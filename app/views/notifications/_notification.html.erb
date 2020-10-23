@@ -5,7 +5,7 @@
 <!---->
 <!--通知機能-->
 <%= link_to user_path(visiter) do %>
-	<p><i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= visiter.nickname %><strong>
+	<p><i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <strong><span class="nickname-color"><%= visiter.nickname %></span><strong>
 <% end %>
 <%= 'さんが' %>
 <!--アクション毎に区別-->
@@ -13,20 +13,30 @@
     <%# when 'follow' then %>
 		<%#= 'あなたをフォローしました' %>
 	<% when 'like' then %>
-		<%= link_to 'あなたの投稿', notification.post %>
-		<%= 'にいいねしました' %>
-		<i class="fas fa-history" aria-hidden="true"></i> <%= date_format(notification.created_at).upcase %><br>
+		<span class="like-notification">
+			<%= link_to notification.post, class: 'MyPostlink' do %>
+				<i class="fas fa-user-alt my-post-color" aria-hidden="true"></i> <span class="my-post-color">あなたの投稿</span>
+			<% end %>
+			<%= 'に' %>
+			<span class="like-color"><%= 'いいね' %></span>
+			<%= 'しました' %>
+			<i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(notification.created_at).upcase %></span><br>
+		</span>
 	<!--「コメント」の場合-->
 	<% when 'comment' then %>
-		<% if notification.post.user_id == visited.id %>
-			<%= link_to 'あなたの投稿', notification.post %>
-		<% else %>
-			<%= link_to post_path(notification.post) do %>
-				<i class="fas fa-user-alt" aria-hidden="true"></i> <strong><%= notification.post.user.nickname + 'さんの投稿' %></strong>
-            <% end %>
-        <% end %>
-        <%= 'にコメントしました' %>
-		<%= Comment.find_by(id: notification.comment_id)&.content %>
-		<i class="fas fa-history" aria-hidden="true"></i> <%= date_format(notification.created_at).upcase %>
+		<span class="comment-notification">
+			<% if notification.post.user_id == visited.id %>
+				<%= link_to 'あなたの投稿', notification.post %>
+			<% else %>
+				<%= link_to post_path(notification.post), class: 'AnotherPostlink' do %>
+					<i class="fas fa-user-alt another-post-color" aria-hidden="true"></i> <strong><span class="another-post-color"><%= notification.post.user.nickname + 'さんの投稿' %></span></strong>
+	            <% end %>
+	        <% end %>
+	        <%= 'に' %>
+	        <span class="comment-color"><%= 'コメント' %></span>
+	        <%= 'しました' %>
+			<i class="far fa-file comment-color" aria-hidden="true"></i> <span class="comment-color"><%= Comment.find_by(id: notification.comment_id)&.content %></span>
+			<i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(notification.created_at).upcase %></span>
+		</span>
 	</p>
 <% end %>

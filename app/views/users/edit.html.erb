@@ -1,33 +1,35 @@
 <div class="container">
 	<div class="row">
-		<div class="">
+		<div class="profile-list">
 			<%= form_with(model: @user, local: true) do |f| %>
-				<h4>登録情報編集画面</h4>
+				<div class="field">
+					<%= f.label :'ユーザー名' %>
+					<%= f.text_field :nickname, autofocus: true, autocomplete: 'nickname' %>
+				</div>
 
-					<div class="field">
-						<%= f.label :'ユーザー名' %>
-						<%= f.text_field :nickname, autofocus: true, autocomplete: 'nickname' %>
-					</div>
-
-                    <div class="field">
-						<%= f.label :'プロフィール画像' %>
+	            <div class="field" style="padding-top: 10px;">
+					<%= f.label :'プロフィール画像' %>
+					<div class="image-form1">
 						<%= f.attachment_field :profile_image %>
 					</div>
+				</div>
 
-					<div class="field">
-						<%= f.label :'メールアドレス' %>
-						<%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
-					</div>
+				<div class="field" style="padding-top: 10px;">
+					<%= f.label :'メールアドレス' %>
+					<%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+				</div>
 
-					<div class="field">
-						<%= f.label :'パスワード' %>
-						<%= f.text_field :password, autofocus: true, autocomplete: 'password' %>
-					</div>
+				<div class="field" style="padding-top: 10px;">
+					<%= f.label :'パスワード' %>
+					<%= f.text_field :password, autofocus: true, autocomplete: 'password' %>
+				</div>
 
-					<div class="action">
-						<%= f.submit '更新', class: 'btn btn-success btn-lg' %>
-						<%= link_to '戻る', top_path, class: 'btn btn-primary' %>
-					</div>
+				<div class="profile-edit-action">
+					<%= f.submit '更新', class: 'btn btn-success btn-lg' %>
+					<%= link_to user_path, class: 'Myprofilelink' do %>
+						<i class="fas fa-undo-alt" aria-hidden="true"></i> <span>My Profileへ戻る</span>
+					<% end %>
+				</div>
 			<% end %>
 		</div>
 	</div>

@@ -52,8 +52,12 @@
                     <% end %>
                 </div>
             <% end %>
+
             <!--いいね機能-->
-            <%= render 'posts/like', post: @post %>
+            <div class="like-action">
+                <%= render 'likes/like', post: @post %>
+            </div>
+            <!---->
         </div>
     </div>
 </div>

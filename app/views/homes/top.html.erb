@@ -1,19 +1,19 @@
 <!--フラッシュメッセージ-->
 <!--ログイン時-->
 <% if flash[:success] %>
-  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
+  <div class="flash" style="font-size: 50px; text-align: center; color: #007700;">
     <%= flash[:success] %>
   </div>
 <% end %>
 <!--新規登録時-->
 <% if flash[:notice] %>
-  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
+  <div class="flash" style="font-size: 50px; text-align: center; color: #007700;">
     <%= flash[:notice] %>
   </div>
 <% end %>
 <!--ログアウト時-->
 <% if flash[:logout] %>
-  <div class="flash" style="font-size: 50px; text-align: center; color: #FF0000;">
+  <div class="flash" style="font-size: 50px; text-align: center; color: #007700;">
     <%= flash[:logout] %>
   </div>
 <% end %>

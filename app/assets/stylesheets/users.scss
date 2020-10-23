@@ -2,6 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.profile-list {
+	text-align: center;
+}
+.my-post {
+	padding-top: 30px;
+	text-align: center;
+}
 .my-like-post {
 	padding-top: 30px;
+	text-align: center;
+	.Nicknamelink {
+		text-decoration: none;
+		color: #0000FF;
+	}
+}
+.my-like-post-list {
+	background:linear-gradient(transparent 50%, #FF88FF 0%);
+}
+.nickname-color {
+	color: #0000FF;
+}
+.email-color {
+	color: #5507FF;
+}
+.profile-action {
+	text-align: center;
+	.Myprofilelink {
+		text-decoration: none;
+		color: #000000;
+    }
+    .Topbacklink {
+		text-decoration: none;
+		color: #000000;
+    }
+    .PostNewlink {
+		text-decoration: none;
+		color: #000000;
+    }
+}
+.profile-action, .fa-user-edit, .fa-undo-alt {
+  font-size: 30px;
+}
+.profile-list {
+	text-align: center;
+	padding-top: 100px;
+}
+.image-form1 {
+	padding-left: 500px;
+}
+.profile-edit-action {
+	padding-top: 30px;
+	.Myprofilelink {
+		text-decoration: none;
+		color: #000000;
+    }
 }

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     impressionist :action => [:show], :unique => [:impressionable_id, :ip_address]
 
 	def index
-		@posts = Post.all
+		@posts = Post.order(created_at: :desc)
 		#@tag_list = Tag.all
 	end
 

@@ -148,9 +148,13 @@
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
 }
-.new-action {
-	padding-top: 50px;
-	text-align: center;
+.like-action {
+	.Unlikelink {
+		text-decoration: none;
+	}
+	.Likelink {
+		text-decoration: none;
+	}
 }
 .error-message-list {
 	list-style: none;
@@ -180,6 +184,24 @@
 .post-delete-action:hover span {
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
+}
+.new-post-action1 {
+	color: #00FF00;
+  	border-radius: 7px;
+  	display: inline-block;
+  	text-align: center;
+  	margin-top: 10px;
+  	height: 50px;
+  	width: 190px;
+  	font-size: 30px;
+  	line-height: 50px;
+  	background: #00FF00;
+  	overflow: hidden;
+  	.PostNewlink {
+  		display: block;
+  		text-decoration: none;
+  		color: #000000;
+  	}
 }
 .new-post-action, .fa-pen-square {
   text-shadow: 2px 2px 1px #00FF00;

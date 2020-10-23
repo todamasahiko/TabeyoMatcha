@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+	text-align: center;
+}
 .impression-rank {
 	padding-top: 50px;
+	text-align: center;
 	.Nicknamelink {
 		text-decoration: none;
 		color: #0000FF;
@@ -30,13 +34,13 @@
 }
 .like-rank {
 	padding-top: 50px;
+	text-align: center;
 	.Nicknamelink {
 		text-decoration: none;
 		color: #0000FF;
 	}
 }
 .new-post-action {
-	margin-left: 520px;
 	color: #00FF00;
   	border-radius: 7px;
   	display: inline-block;
@@ -53,15 +57,15 @@
   		color: #000000;
   	}
 }
-.btn-new-post-action, .fa-pen-square {
+.new-post-action, .fa-pen-square {
   text-shadow: 2px 2px 1px #00FF00;
   font-size: 30px;
 }
-.btn-new-post-action span {
+.new-post-action span {
   display: inline-block;
   transition: .5s;
 }
-.btn-new-post-action:hover span {
+.new-post-action:hover span {
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
 }

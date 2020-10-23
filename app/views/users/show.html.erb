@@ -1,44 +1,48 @@
 <div class="container">
 	<div class="row">
-		<!--ユーザー名-->
-	    <i class="fas fa-user-alt" aria-hidden="true"></i> <%= @user.nickname %>
-	    <!--プロフィール画像-->
-		<%= attachment_image_tag(@user, :profile_image, size: '150x150', fallback: 'no_image.jpg') %></th>
-		<!--メールアドレス-->
-		<% if current_user.id == @user.id %>
-			<i class="fas fa-envelope"></i> <%= @user.email %>
-		<!--DM機能-->
-		<%# if current_user.id == @user.id %>
-	    	<%# if @isRoom == true %>
-				<!--すでにメッセージルームがある場合-->
-			    <%#= link_to 'メッセージルームへ', room_path(@roomId), class: 'btn btn-primary' %>
+		<div class="profile-list">
+			<!--ユーザー名-->
+		    <i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%= @user.nickname %></span>
+		    <!--プロフィール画像-->
+			<%= attachment_image_tag(@user, :profile_image, size: '150x150', fallback: 'no_image.jpg') %></th>
+			<!--メールアドレス-->
+			<% if current_user.id == @user.id %>
+				<i class="fas fa-envelope email-color"></i> <span class="email-color"><%= @user.email %></span>
+			<!--DM機能-->
+			<%# if current_user.id == @user.id %>
+		    	<%# if @isRoom == true %>
+					<!--すでにメッセージルームがある場合-->
+				    <%#= link_to 'メッセージルームへ', room_path(@roomId), class: 'btn btn-primary' %>
+				<%# else %>
+					<!--Room・Entryの2つにデータを送る-->
+					<!--新規作成の場合-->
+					<%#= form_with(model: @room, url: 'users/:user_id/rooms', local: true) do |f| %>
+				    	<%#= fields_for @entry do |e| %>
+				    		<!--Entryにuser_idを送るため、valueオプションで指定-->
+				        	<%#= e.hidden_field :user_id, value: @user.id %>
+				    	<%# end %>
+				    	<%#= f.submit 'メッセージを始める', class: 'btn btn-primary' %>
+				  	<%# end %>
+				<%# end %>
 			<%# else %>
-				<!--Room・Entryの2つにデータを送る-->
-				<!--新規作成の場合-->
-				<%#= form_with(model: @room, url: 'users/:user_id/rooms', local: true) do |f| %>
-			    	<%#= fields_for @entry do |e| %>
-			    		<!--Entryにuser_idを送るため、valueオプションで指定-->
-			        	<%#= e.hidden_field :user_id, value: @user.id %>
-			    	<%# end %>
-			    	<%#= f.submit 'メッセージを始める', class: 'btn btn-primary' %>
-			  	<%# end %>
-			<%# end %>
-		<%# else %>
-			<%= link_to edit_user_path do %>
-				<i class="fas fa-user-edit" aria-hidden="true"></i> 登録情報を変更する
-			<% end %>
-            <!--改善できなかったら削除-->
-			<%#= link_to edit_user_password_path do %>
-				<%#i class="fas fa-lock" aria-hidden="true"></i> パスワードを変更する
-			<%# end %>
+		</div>
 
-			<%= link_to top_path do %>
-				<i class="fas fa-undo-alt" aria-hidden="true"></i> Topへ戻る
-			<% end %>
+				<div class="profile-action">
+					<%= link_to edit_user_path, class: 'Myprofilelink' do %>
+						<i class="fas fa-user-edit" aria-hidden="true"></i> <span>登録情報を変更する</span>
+					<% end %>
+		            <!--改善できなかったら削除-->
+					<%#= link_to edit_user_password_path do %>
+						<%#i class="fas fa-lock" aria-hidden="true"></i> パスワードを変更する
+					<%# end %>
+					<%= link_to top_path, class: 'Topbacklink' do %>
+						<i class="fas fa-undo-alt" aria-hidden="true"></i> <span>Topへ戻る</span>
+					<% end %>
 
-			<%= link_to new_post_path do %>
-				<i class="fas fa-pen-square" aria-hidden="true"></i> 新規投稿
-			<% end %>
+		  		    <%= link_to new_post_path, class: 'PostNewlink' do %>
+		              <i class="fas fa-pen-square" aria-hidden="true"></i> <span>新規投稿</span>
+		            <% end %>
+	        	</div>
 		<% end %>
 
         <div class="my-post">
@@ -46,32 +50,43 @@
 	    		<%= link_to post_path(post.id) do %>
 	    			<%= attachment_image_tag post, :image, size: '300x200' %>
 	    		<% end %>
-	    		<i class="fas fa-tags" aria-hidden="true"></i> <%= post.tag_content %>
-	            <i class="fas fa-comment" aria-hidden="true"></i> <%= post.comments.count %>
-	            <i class="fas fa-heart" aria-hidden="true"></i> <%= post.likes.count %>
-	            <i class="far fa-eye" aria-hidden="true"></i> <%= post.impressionist_count %>
+	    		<p><i class="fas fa-tags tag-color" aria-hidden="true"></i> <span class="tag-color"><%= post.tag_content %></span>
+	            <i class="fas fa-comment comment-color" aria-hidden="true"></i> <span class="comment-color"><%= post.comments.count %></span>
+	            <i class="fas fa-heart like-color" aria-hidden="true"></i> <span class="like-color"><%= post.likes.count %></span>
+	            <i class="far fa-eye impression-color" aria-hidden="true"></i> <span class="impression-color"><%= post.impressionist_count %></span>
 	            <!--時間表示-->
-	            <i class="fas fa-history" aria-hidden="true"></i> <%= date_format(post.created_at) %>
+	            <i class="fas fa-history" aria-hidden="true"></i> <span class="time-color"><%= date_format(post.created_at) %></span></p>
 	    	<% end %>
 	    </div>
-		<%#h4>コメントした投稿</h4>
-		<% @comment_posts.each do |comment_post| %>
-        	<%#= link_to post_path(@post) do %>
-    			<%#= attachment_image_tag comment_post, :image, size: '300x200' %>
-    		<%# end %>
-    		<%#= @comment.content %>
-    	<%# end %>
-    	<div class="my-like-post">
-			<h4><strong>いいねした投稿</strong></h4>
-			<% @like_posts.each do |like_post| %>
-	        	<%= link_to post_path(@post) do %>
-	    			<%= attachment_image_tag like_post, :image, size: '300x200' %>
-	    		<% end %>
-	    		<%= link_to user_path(@post.user) do %>
-	    			<p><i class="fas fa-user-alt" aria-hidden="true"></i> <%= @user.nickname %>
-	    		<% end %>
-	    	    <i class="fas fa-heart" aria-hidden="true"></i> <%= @post.likes.count %></p>
-	    	<% end %>
-	    </div>
+
+		<!-- <div class="my-comment-post"> -->
+			<!-- <h4><strong><span class="my-comment-post-list">[コメントした投稿]</span></strong></h4> -->
+			<%# @comment_posts.each do |post| %>
+	        	<%#= link_to post_path(post) do %>
+	    			<%#= attachment_image_tag post, :image, size: '300x200' %>
+	    		<%# end %>
+	    		<%#= link_to user_path(post.user), class: 'Nicknamelink' do %>
+	    			<!-- <p><i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%#= post.user.nickname %></span> -->
+	    		<%# end %>
+	    	    <!-- <i class="fas fa-heart comment-color" aria-hidden="true"></i> <span class="comment-color"><%#= post.comment.content %></span></p> -->
+	    	<%# end %>
+	    <!-- </div> -->
+	    	<div class="my-like-post">
+				<h4><strong><span class="my-like-post-list">[いいねした投稿]</span></strong></h4>
+	    		<% if @like_posts.present? %>
+					<% @like_posts.each do |post| %>
+			        	<%= link_to post_path(post) do %>
+			    			<%= attachment_image_tag post, :image, size: '300x200' %>
+			    		<% end %>
+			    		<%= link_to user_path(post.user), class: 'Nicknamelink' do %>
+			    			<p><i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%= post.user.nickname %></span>
+			    		<% end %>
+			    	    <i class="fas fa-heart like-color" aria-hidden="true"></i> <span class="like-color"><%= post.likes.count %></span></p>
+			    	<% end %>
+				<% else %>
+					<p>まだありません</p>
+				<% end %>
+		    </div>
+
 	</div>
 </div>

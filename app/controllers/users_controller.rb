@@ -6,8 +6,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @post = Post.find(params[:id])
       @posts = @user.posts
+      #ログインユーザーの「いいね」したpost_idを取得
+      like = Like.where(user_id: current_user.id).pluck(:post_id)
+      #Postテーブルから「いいね」済レコードを取得
       @like_posts = @user.like_posts
-      #@comment_posts = @user.comment_posts
+      #ログインユーザーの「コメント」したpost_idを取得
+      #comments = Comment.where(user_id: current_user.id).pluck(:post_id)
+      #Postテーブルから「コメント」済レコードを取得
+      #@comment_posts = Comment.find(comments)
       ##DM機能
       #自身の参加しているメッセージルームの情報を取得する
       #@currentUserEntry = Entry.where(user_id: current_user.id)
@@ -41,10 +47,10 @@ class UsersController < ApplicationController
   def update
       @user = User.find(params[:id])
       if @user.update(user_params)
-         flash[:notice] = '更新しました'
-         redirect_to user_path(@user)
+        flash[:notice] = '更新しました'
+        redirect_to user_path(@user.id)
       else
-         render :edit
+        render :edit
       end
   end
   #フォローをする
@@ -60,6 +66,6 @@ class UsersController < ApplicationController
   ##ストロングパロメーター
   private
   def user_params
-  	  params.require(:user).permit(:nickname, :email, :profile_image)
+  	  params.require(:user).permit(:nickname, :email, :profile_image, :password)
   end
 end

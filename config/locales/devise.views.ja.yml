@@ -1,6 +1,22 @@
 #deviseの日本語設定
 ja:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              blank: "が入力されていません"
+              too_long: "は15文字以内で入力してください"
+            email:
+              blank: "が入力されていません"
+              invalid: "が正しくありません"
+            password:
+              blank: "が入力されていません"
+              invalid: "が正しくありません"
+              too_short: "は8文字以上で入力してください"
+            password_confirmation:
+              confirmation: "入力を行なってください"
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -29,22 +45,6 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
-    errors:
-      models:
-        user:
-          attributes:
-            nickname:
-              blank: が入力されていません
-              too_long: は15文字以内で入力してください
-            email:
-              blank: が入力されていません
-              invalid: が正しくありません
-            password:
-              blank: が入力されていません
-              invalid: が正しくありません
-              too_short: は8文字以上で入力してください
-            password_confirmation:
-              confirmation: 入力を行なってください
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

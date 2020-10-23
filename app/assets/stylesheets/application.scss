@@ -16,6 +16,16 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+@media (max-width: 480px) {
+  .content {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1080px) {
+  .content {
+    font-size: 2rem;
+  }
+}
 body {
   display: flex;
   flex-flow: column;
@@ -36,9 +46,11 @@ header {
 .headline {
   font-size: 50px;
 }
+nav {
+  text-align: center;
+}
 .nav-list {
   padding: 10px 0;
-  padding-left: 475px;
   background-color: #00DD00;
   width: 100%;
   .Toplink {
@@ -85,7 +97,7 @@ header {
 .nav-list-item {
   list-style: none;
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 10px;
   font-size: 20px;
 }
 .nav-list-item span {
