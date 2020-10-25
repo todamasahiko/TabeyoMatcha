@@ -15,7 +15,6 @@ class User < ApplicationRecord
   ##DM機能
   #has_many :messaages, dependent: :destroy
   #has_many :entries, dependent: :destroy
-  #has_many :like_posts, through: :likes
   #has_many :bookmarks, dependent: :destroy
   ##フォロー・フォロワー機能
   #フォローをする

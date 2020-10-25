@@ -43,10 +43,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-      post:
-        image: 投稿写真
-        content: 投稿内容
-        tag_content: 投稿タグ
     models:
       user: ユーザー
   devise:

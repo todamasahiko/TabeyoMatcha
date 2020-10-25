@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     	   flash[:notice] = '投稿ありがとう！'
     	   redirect_to posts_path
     	else
-    	   flash[:alert] = '投稿に失敗しました'
+    	   flash[:alert] = '投稿に失敗しました。'
     	   render :new
     	end
 	end

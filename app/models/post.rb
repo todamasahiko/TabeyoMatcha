@@ -2,6 +2,7 @@ class Post < ApplicationRecord
     ###アソシエーション
 	belongs_to :user
 	attachment :image
+	##コメント機能
 	has_many :comments
 	##いいね機能
 	has_many :likes
