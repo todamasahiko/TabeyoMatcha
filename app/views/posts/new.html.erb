@@ -20,20 +20,20 @@
 					</div>
 				<% end %>
 
-				<div class="field" style="padding-top: 30px; padding-left: 500px;">
+				<div class="image-field">
 					<%= f.attachment_field :image %>
 				</div>
 
-				<div class="field" style="text-align: center; padding-top: 5px;">
-					<%= f.text_area :content, size: '90x5', placeholder: '投稿内容' %>
+				<div class="field">
+					<%= f.text_area :content, size: '70x5', placeholder: '投稿内容' %>
 				</div>
 
-				<div class="field" style="text-align: center;">
-					<%= f.text_area :tag_content, size: '90x5', placeholder: '投稿タグ 例)#美味しい #美しい' %>
+				<div class="field">
+					<%= f.text_area :tag_content, size: '70x5', placeholder: '投稿タグ 例)#美味しい #美しい' %>
 				</div>
 
 				<div class="new-action">
-					<%= f.submit '新規投稿', class: 'btn btn-success btn-lg' %>
+					<%= f.submit '新規投稿', class: 'new-button' %>
 				</div>
 			<% end %>
 		</div>

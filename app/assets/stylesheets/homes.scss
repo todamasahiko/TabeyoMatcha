@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container {
+	text-align: center;
 }
 .slide {
 	padding-top: 30px;
@@ -57,6 +58,8 @@
   	line-height: 50px;
   	background: #00FF00;
   	overflow: hidden;
+  	margin-top: 10px;
+  	margin-bottom: 30px;
   	.PostNewlink {
   		display: block;
   		text-decoration: none;

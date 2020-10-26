@@ -14,11 +14,15 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery.jscroll.min.js
 //= require bootstrap-sprockets
 //= require_tree .
 
+//slick
 $(function(){
 	$('.slide').slick({
+	  //上記変化にかかる時間
+	  speed: 1000,
 	  //自動スライド
 	  autoplay: true,
 	  //スライド表示時間
@@ -26,4 +30,16 @@ $(function(){
 	  //ドットの描写をデフォルトにしない
 	  dots: true,
 	});
+});
+//jscroll
+$(window).on('scroll', function(){
+	scrollHeight = $(document).height();
+	scrollPosition = $(window).height() + $(window).scrollTop();
+	//スクロールが画面下部3%の範囲の場合に新たにページをロードさせる
+	if ((scrollHeight - scrollPosition) / scrollHeight <= 0.03){
+		$('.jscroll').jscroll({
+		contentSelector: '.post-list',
+		nextSelector: 'span.next a'
+	  });
+	}
 });

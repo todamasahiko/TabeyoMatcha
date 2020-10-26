@@ -5,6 +5,7 @@
 .post-list {
 	padding-top: 50px;
 	text-align: center;
+	padding-bottom: 50px;
 	.Nicknamelink {
 		text-decoration: none;
 		color: #0000FF;
@@ -21,6 +22,7 @@
 .img-wrap1 {
 	overflow: hidden;
 	position: relative;
+	padding-top: 20px;
 }
 .img-wrap1:before,
 .img-wrap1:after {
@@ -57,6 +59,7 @@
 .img-wrap2 {
 	overflow: hidden;
 	position: relative;
+	padding-top: 30px;
 }
 .img-wrap2:before,
 .img-wrap2:after {
@@ -134,7 +137,7 @@
 }
 .comment-form {
 	padding-top: 50px;
-	padding-left: 10px;
+	text-align: center;
 }
 .button {
   font-size: 30px;
@@ -143,6 +146,7 @@
   display: inline-block;
   transition: .5s;
   opacity: 1;
+  margin-top: 20px;
 }
 .button:hover {
   -webkit-transform: rotateX(360deg);
@@ -222,4 +226,19 @@
 .new-post-action:hover span {
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
+}
+.field {
+	padding-top: 5px;
+}
+.image-field {
+	padding-left: 500px;
+}
+.new-button {
+  font-size: 20px;
+  background-color: #1BFF4A;
+  color: #000000;
+  display: inline-block;
+  transition: .5s;
+  opacity: 1;
+  margin-top: 10px;
 }

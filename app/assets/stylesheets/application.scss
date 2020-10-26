@@ -134,7 +134,7 @@ footer {
 }
 .Signup-button {
   font-size: 30px;
-  background-color: #B6FF01;
+  background-color: #B384FF;
   color: #000000;
   display: inline-block;
   transition: .5s;
@@ -145,4 +145,10 @@ footer {
 }
 .slick-dots {
   padding-right: 70px;
+}
+.post-list {
+  padding-top: 0px;
+}
+.pagination {
+  display: none;
 }

@@ -74,6 +74,7 @@ gem 'refile-mini_magick'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'kaminari'
 #deviseの日本語化
 gem 'devise-i18n'
 #deviseのview画面の日本語化

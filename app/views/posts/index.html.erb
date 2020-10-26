@@ -1,10 +1,10 @@
-<!--メッセージ-->
+<!--フラッシュメッセージ-->
 <% if flash[:notice] %>
 	<div class="flash" style="font-size: 25px; color: #FF0000; text-align: center;">
 		<%= flash[:notice] %>
 	</div>
 <% end %>
-<!---->
+
 <div class="container">
 	<div class="row">
     <%#= render_with_tags(@post.tag_content) %>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-12">
-      <div class="post-list">
+      <div class="post-list jscroll">
       	  <% @posts.each do |post| %>
       	    <%= link_to post_path(post.id) do %>
               <div class="img-wrap1"><%= attachment_image_tag post, :image, size: '300x200' %></div>
@@ -31,7 +31,8 @@
             <!--時間表示-->
             <i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(post.created_at) %></span></p>
       	  <% end %>
-
+          <!--ページネーション-->
+          <%= paginate @posts %>
       </div>
 	  </div>
   </div>

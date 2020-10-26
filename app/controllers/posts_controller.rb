@@ -5,7 +5,8 @@ class PostsController < ApplicationController
     impressionist :action => [:show], :unique => [:impressionable_id, :ip_address]
 
 	def index
-		@posts = Post.order(created_at: :desc)
+		#投稿の中から新着順表示
+		@posts = Post.order(created_at: :desc).page(params[:page]).per(5)
 		#@tag_list = Tag.all
 	end
 
