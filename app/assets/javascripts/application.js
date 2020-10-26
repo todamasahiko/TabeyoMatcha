@@ -16,3 +16,14 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function(){
+	$('.slide').slick({
+	  //自動スライド
+	  autoplay: true,
+	  //スライド表示時間
+	  autoplaySpeed: 3000,
+	  //ドットの描写をデフォルトにしない
+	  dots: true,
+	});
+});

@@ -46,13 +46,11 @@ header {
 .headline {
   font-size: 50px;
 }
-nav {
-  text-align: center;
-}
 .nav-list {
+  text-align: center;
+  width: 100%;
   padding: 10px 0;
   background-color: #00DD00;
-  width: 100%;
   .Toplink {
       display: block;
       text-decoration: none;
@@ -141,4 +139,10 @@ footer {
   display: inline-block;
   transition: .5s;
   opacity: 1;
+}
+.slick-slide {
+  padding-right: 30px;
+}
+.slick-dots {
+  padding-right: 70px;
 }
