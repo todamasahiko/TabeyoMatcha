@@ -19,18 +19,22 @@
 //= require_tree .
 
 //slick
-$(function(){
-	$('.slide').slick({
-	  //上記変化にかかる時間
-	  speed: 1000,
-	  //自動スライド
-	  autoplay: true,
-	  //スライド表示時間
-	  autoplaySpeed: 3000,
-	  //ドットの描写をデフォルトにしない
-	  dots: true,
+///turbolinksを無効化する
+document.addEventListener("turbolinks:load"
+, function(){
+	$(function(){
+	  $('.slide').slick({
+	    //上記変化にかかる時間
+	    speed: 1000,
+	    //自動スライド
+	    autoplay: true,
+	    //スライド表示時間
+	    autoplaySpeed: 3000,
+	    //ドットの描写をデフォルトにしない
+	    dots: true,
+	  });
 	});
-});
+  });
 //jscroll
 $(window).on('scroll', function(){
 	scrollHeight = $(document).height();
