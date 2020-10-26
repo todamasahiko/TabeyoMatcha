@@ -203,6 +203,14 @@
   		color: #000000;
   	}
 }
+.new-post-action1 span {
+  display: inline-block;
+  transition: .5s;
+}
+.new-post-action1:hover span {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
 .new-post-action, .fa-pen-square {
   text-shadow: 2px 2px 1px #00FF00;
   font-size: 30px;

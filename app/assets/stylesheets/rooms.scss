@@ -1,3 +1,29 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dm-room, .dm-form {
+	padding-top: 50px;
+}
+.nickname1-color {
+	color: #B384FF;
+}
+.comment1-color {
+	color: #FF8856;
+}
+.dm-message {
+	padding-top: 50px;
+}
+.chat-button {
+  font-size: 20px;
+  background-color: #1BFF4A;
+  color: #000000;
+  display: inline-block;
+  transition: .5s;
+  opacity: 1;
+  margin-top: 10px;
+}
+.chat-button:hover {
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}

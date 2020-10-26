@@ -16,33 +16,42 @@ class UsersController < ApplicationController
       #@comment_posts = Comment.find(comments)
       ##DM機能
       #自身の参加しているメッセージルームの情報を取得する
-      #@currentUserEntry = Entry.where(user_id: current_user.id)
+      @current_entry = Entry.where(user_id: current_user.id)
       #選択したユーザーのメッセージルーム情報を取得する
-      #@userEntry = Entry.where(user_id: @user.id)
+      @another_entry = Entry.where(user_id: @user.id)
       #自身と選択したユーザーの共通メッセージルームがあるかを確認
-      #unless @user.id == current_user.id
+      if @user.id != current_user.id
         #自身と選択したユーザーのEntriesをそれぞれ取り出す
-        #@currentUserEntry.each do |current|
-          #@userEntry.each do |user|
+        @current_entry.each do |current|
+          @another_entry.each do |another|
             #すでに作成済の場合
-            #if current.room_id == user.room_id
-              #@isRoom = true
+            if current.room_id == another.room_id
+              @isRoom = true
               #room_idを取り出す
-              #@roomId = current.room_id
-            #end
-          #end
-        #end
+              @roomId = current.room_id
+            end
+          end
+        end
         #まだ未作成の場合
-        #unless @isRoom
-          #@room = Room.new
-          #@entry = Entry.new
-        #end
-      #end
+        unless @isRoom
+          @room = Room.new
+          @entry = Entry.new
+        end
+      end
   end
 
   def edit
       @user = User.find(params[:id])
   end
+
+  #def create
+    #@room = Room.create
+    #自身のEntry
+    #@entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)
+    #DMを受け取るユーザーのEntry
+    #@entry2 = Entry.create((entry_params).merge(room_id: @room.id))
+    #redirect_to room_path(@room)
+  #end
 
   def update
       @user = User.find(params[:id])

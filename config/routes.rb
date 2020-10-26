@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   	#get 'follows' => 'relationships#follower'
     #フォローを外す
   	#get 'followers' => 'relationships#followed'
-    ##DN機能
-    #resources :messages, only: [:create, :destroy]
-    #resources :rooms, only: [:show, :create]
     ##問い合わせ機能
     #resources :inquiries, only: [:new]
     #Myprofileのルーティングにネストする
@@ -25,6 +22,10 @@ Rails.application.routes.draw do
       get :likes
     end
   end
+  #post '/users/:id' => 'users#create'
+  ##DN機能
+  resources :rooms, only: [:show, :create]
+  resources :messages, only: [:create, :destroy]
   ##post
   resources :posts do
     ##コメント機能

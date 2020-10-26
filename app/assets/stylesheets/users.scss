@@ -42,7 +42,7 @@
     }
 }
 .profile-action, .fa-user-edit, .fa-undo-alt {
-  font-size: 30px;
+  font-size: 20px;
 }
 .profile-list {
 	text-align: center;
@@ -57,4 +57,19 @@
 		text-decoration: none;
 		color: #000000;
     }
+}
+.dm-action {
+	font-size: 20px;
+	.Dmlink {
+		text-decoration: none;
+		color: #000000;
+    }
+}
+.dm-button {
+  font-size: 20px;
+  background-color: #1BFF4A;
+  color: #000000;
+  display: inline-block;
+  transition: .5s;
+  opacity: 1;
 }

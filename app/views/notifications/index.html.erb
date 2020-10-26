@@ -6,8 +6,8 @@
 			<!--通知がある場合-->
 			<% if @notifications.exists? %>
 				<div class="notification-delete-action">
-				<!--削除ボタンを表示-->
-					<%= link_to destroy_all_notifications_path, method: :delete, class: 'NotificationAlldeletelink' do %>
+					<!--削除ボタンを表示-->
+					<%= link_to destroy_all_notifications_path, method: :delete, data: {confirm: '通知をすべて削除します。よろしいですか？'}, class: 'NotificationAlldeletelink' do %>
 						<i class="fas fa-trash-alt"　aria-hidden="true"></i> <span>すべて削除</span>
 					<% end %>
 				</div>

@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="row">
+		<div class="dm-room">
+			<!--フラッシュメッセージ-->
+            <!--成功時-->
+            <% if flash[:success] %>
+              <div class="flash" style="font-size: 25px; color: #FF0000;">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
+            <!--失敗時-->
+            <% if flash[:alert] %>
+              <div class="flash" style="font-size: 25px; color: #FF0000;">
+                <%= flash[:alert] %>
+              </div>
+            <% end %>
+
+			<h4>メッセージルーム</h4>
+			<% @entries.each do |e| %>
+				<% if e.user.nickname == current_user.nickname %>
+					<i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%= e.user.nickname %></span>
+				<% else %>
+					<i class="fas fa-user-alt nickname1-color" aria-hidden="true"></i> <span class="nickname1-color"><%= e.user.nickname %>さん</span>
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="dm-form">
+			<h4>メッセージ内容</h4>
+			<!--すでにやり取りがある場合-->
+			<% if @messages.present? %>
+				<% @messages.each do |m| %>
+					<% if current_user.nickname == m.user.nickname %>
+						<p style="text-align: right;">
+						<i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%= m.user.nickname %></span>
+						<i class="far fa-comment comment-color" aria-hidden="true"></i> <span class="comment-color"><%= m.content %></span>
+						<i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(m.created_at) %></span></p>
+					<% else %>
+						<p style="text-align: left;">
+						<i class="fas fa-user-alt nickname1-color" aria-hidden="true"></i> <span class="nickname1-color"><%= m.user.nickname %>さん</span>
+						<i class="far fa-comment comment1-color" aria-hidden="true"></i> <span class="comment1-color"><%= m.content %></span>
+						<i class="fas fa-history time-color" aria-hidden="true"></i> <span class="time-color"><%= date_format(m.created_at) %></span></p>
+					<% end %>
+				<% end %>
+			<% else %>
+				<p>メッセージはまだありません</p>
+			<% end %>
+		</div>
+
+		<div class="dm-message">
+			<%= form_with(model: @messages, url: messages_path, local: true) do |f| %>
+				<%= f.text_field :content, size: 100, placeholder: 'メッセージを入力してください' %>
+				<%= f.hidden_field :room_id, value: @room.id %>
+				<p><%= f.submit 'メッセージを送る', class: 'chat-button' %></p>
+			<% end %>
+		</div>
+
+		<!-- <div class="dm-delete-action"> -->
+			<!--削除ボタンを表示-->
+			<%#= link_to message_path, method: :delete, data: {confirm: 'メッセージを削除します。よろしいですか？'},class: 'NotificationAlldeletelink' do %>
+				<!-- <i class="fas fa-trash-alt"　aria-hidden="true"></i> <span>削除</span> -->
+			<%# end %>
+		<!-- </div> -->
+	</div>
+</div>

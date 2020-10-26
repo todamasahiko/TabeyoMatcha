@@ -30,7 +30,7 @@
             <% end %>
             <!---コメント一覧-->
             <%= render 'posts/comment', comments: @post.comments %>
-            <!--メッセージ-->
+            <!--フラッシュメッセージ-->
             <!--成功時-->
             <% if flash[:success] %>
               <div class="flash" style="font-size: 25px; color: #FF0000;">

@@ -4,28 +4,10 @@
 			<!--ユーザー名-->
 		    <i class="fas fa-user-alt nickname-color" aria-hidden="true"></i> <span class="nickname-color"><%= @user.nickname %></span>
 		    <!--プロフィール画像-->
-			<%= attachment_image_tag(@user, :profile_image, size: '150x150', fallback: 'no_image.jpg') %></th>
+			<%= attachment_image_tag(@user, :profile_image, size: '150x150', fallback: 'no_image.jpg') %>
 			<!--メールアドレス-->
 			<% if current_user.id == @user.id %>
 				<i class="fas fa-envelope email-color"></i> <span class="email-color"><%= @user.email %></span>
-			<!--DM機能-->
-			<%# if current_user.id == @user.id %>
-		    	<%# if @isRoom == true %>
-					<!--すでにメッセージルームがある場合-->
-				    <%#= link_to 'メッセージルームへ', room_path(@roomId), class: 'btn btn-primary' %>
-				<%# else %>
-					<!--Room・Entryの2つにデータを送る-->
-					<!--新規作成の場合-->
-					<%#= form_with(model: @room, url: 'users/:user_id/rooms', local: true) do |f| %>
-				    	<%#= fields_for @entry do |e| %>
-				    		<!--Entryにuser_idを送るため、valueオプションで指定-->
-				        	<%#= e.hidden_field :user_id, value: @user.id %>
-				    	<%# end %>
-				    	<%#= f.submit 'メッセージを始める', class: 'btn btn-primary' %>
-				  	<%# end %>
-				<%# end %>
-			<%# else %>
-		</div>
 
 				<div class="profile-action">
 					<%= link_to edit_user_path, class: 'Myprofilelink' do %>
@@ -43,7 +25,28 @@
 		              <i class="fas fa-pen-square" aria-hidden="true"></i> <span>新規投稿</span>
 		            <% end %>
 	        	</div>
-		<% end %>
+	        <% else %>
+	        	<div class="dm-action">
+					<!--DM機能-->
+			    	<% if @isRoom == true %>
+						<!--すでにメッセージルームがある場合-->
+					    <%= link_to room_path(@roomId), class: 'Dmlink' do %>
+					      <i class="fas fa-house-user" aria-hidden="true"></i> <span>メッセージルームへ</span>
+			            <% end %>
+					<% else %>
+						<!--Room・Entryの2つにデータを送る-->
+						<!--新規作成の場合-->
+						<%= form_with(model: @room, url: rooms_path, local: true) do |f| %>
+					    	<%= fields_for @entry do |e| %>
+					    		<!--Entryにuser_idを送るため、valueオプションで指定-->
+					        	<%= e.hidden_field :user_id, value: @user.id %>
+					    	<% end %>
+					    	<%= f.submit 'メッセージを始める', class: 'dm-button' %>
+					  	<% end %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 
         <div class="my-post">
 	        <% @posts.each do |post| %>
