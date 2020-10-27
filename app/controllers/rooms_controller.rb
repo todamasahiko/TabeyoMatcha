@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
 	##ストロングパロメーター
 	private
 	def entry_params
-		#require(:entry)があるとエラーになってしまう
-		params.permit(:user_id, :room_id)
+		#require(:entry)があるとエラーになってしまう➡︎あってもエラーが出なくなった、DM機能動くようになった。なぜ？
+		params.require(:entry).permit(:user_id, :room_id)
 	end
 end
