@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
 		#formで作られたroom_idと自身のユーザーIDがEntryにあるかを確認
 		if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
 			@message = Message.create((message_params).merge(user_id: current_user.id))
+			#@room = @message.room
 			flash[:success] = 'メッセージの送信に成功しました。'
 			redirect_to "/rooms/#{@message.room_id}"
 		else

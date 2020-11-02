@@ -47,6 +47,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  #コードフォーマット
+  gem 'rubocop-airbnb'
 end
 
 group :development do
